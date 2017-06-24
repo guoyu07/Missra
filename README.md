@@ -38,7 +38,7 @@ MySQL扩展库
 ## 程序安装使用
 * 下载程序解压到本地目录;
 * 上传程序目录中的/uploads到网站根目录
-* 运行http://www.yourname.com/install/index.php(yourname表示你的域名),按照安装提速说明进行程序安装
+* 浏览器运行domain/install/index.php (domain表示你的域名),按照安装提速说明进行程序安装
  
 ## 相关资源
-Missra官网	http://www.missra.com
+Missra官网	http://www.missra.com/
