@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+    <title>标签_{missra:global.cfg_webname/}</title>
+    <meta name="keywords" content="{missra:field name='keywords'/}" />
+    <meta name="description" content="{missra:field name='description' function='html2text(@me)'/}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/uikit/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/style/common.css" />
+</head>
+
+<body class="tags-page">
+    {missra:include filename="head.htm"/}
+    <div id="container">
+        <div class="uk-container uk-container-center inner">
+            <div class="block-title">
+                <h2>TAG标签</h2>
+            </div>
+            <div class="tags-list uk-margin">
+                <div class="uk-panel uk-panel-box">
+                    <div class="uk-panel-title"><h3>最新标签</h3></div>
+                    <div class="uk-panel-badge uk-badge uk-badge-danger">New</div>
+                    <div class="uk-panel-content">
+                        {missra:tag row='60' sort='new'}
+                        <a href='[field:link/]' class='tag[field:highlight /]'>[field:tag /]</a> {/missra:tag}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tags-list uk-margin">
+                <div class="uk-panel uk-panel-box">
+                    <div class="uk-panel-title"><h3>当月热门标签</h3></div>
+                    <div class="uk-panel-badge uk-badge uk-badge-danger">Hot</div>
+                    <div class="uk-panel-content">
+                        {missra:tag row='60' sort='month'}
+                        <a href='[field:link/]' class='tag[field:highlight /]'>[field:tag /]</a> 
+                        {/missra:tag}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tags-list uk-margin">
+                <div class="uk-panel uk-panel-box">
+                    <div class="uk-panel-title"><h3>随机标签</h3></div>
+                    <div class="uk-panel-badge uk-badge uk-badge-danger">Rand</div>
+                    <div class="uk-panel-content">
+                        {missra:tag row='60' sort='rand'}
+                        <a href='[field:link/]' class='tag[field:highlight /]'>[field:tag /]</a> 
+                        {/missra:tag}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {missra:include filename="footer.htm"/}
+	
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/app.js"></script>
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/uikit/js/uikit.min.js" ></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
+	
+</body>
+
+</html>

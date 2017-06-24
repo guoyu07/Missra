@@ -1,0 +1,42 @@
+<div id="header">
+	<div class="top">  
+		<div class="mi-1000 center">  
+			<div class="toplinks"><a href="{missra:global.cfg_cmsurl/}/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="{missra:global.cfg_cmsurl/}/data/sitemap.html" target="_blank">网站地图</a>|<a href="{missra:global.cfg_cmsurl/}/tags.php">TAG标签</a><a href="{missra:global.cfg_dataurl/}/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('{missra:global.cfg_basehost/}');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('{missra:global.cfg_basehost/}','{missra:global.cfg_webname/}')">加入收藏</a>]</span></div>
+		</div> 
+	</div>
+	<div class="banner mi-1000 center">
+		<div class="logo">
+			<a href="{missra:global.cfg_basehost/}"><img src="{missra:global.cfg_templets_skin/}/images/logo.png" alt="{missra:global.cfg_webname/}"/></a>
+		</div>
+		<div class="box">{missra:myad name='innerTopBanner1'/}</div>
+		<div class="box2">{missra:myad name='innerTopBanner2'/}</div>  
+	</div>
+	<div id="navMenu">
+		<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+		<ul class="mi-1000 center">
+			<li><a href='{missra:global.cfg_cmsurl/}/'>主页</a></li>
+			{missra:channel type='top' row='10' currentstyle="<li class='hover'><a href='~typelink~' ~rel~>~typename~</a></li>"}
+			<li><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>
+			{/missra:channel}
+			<li><a href="{missra:global.cfg_cmsurl/}/special" target="_blank">专题</a></li>
+		</ul>
+	</div>
+	<div class="search mi-1000">
+		<form class="form"  name="formsearch" action="{missra:global.cfg_cmsurl/}/plus/search.php">
+			<input name="q" type="text" class="search-keyword" id="search-keyword" value="搜索..." onfocus="if(this.value=='搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='搜索...';}" />
+			<select name="searchtype" class="search-option" id="search-option">
+				<option value="title" selected='1'>检索标题</option>
+				<option value="titlekeyword">智能模糊</option>
+			</select>
+			<button type="submit" class="search-submit">搜索</button>
+		</form>
+		<div class="tags">
+			<span>热门标签:</span>
+			<ul>
+			{missra:tag row='10' getall='1' sort='month'}
+				<li><a href='[field:link/]'>[field:tag /]</a></li>
+			{/missra:tag}
+			</ul>
+		</div>
+	</div>
+</div>

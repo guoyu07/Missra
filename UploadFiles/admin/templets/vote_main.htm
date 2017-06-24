@@ -1,0 +1,57 @@
+{missra:config.pagesize value='20'/}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+    <title>投票管理</title>
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
+        <tr>
+            <td height="28" background="images/tbg.gif" colspan="7" style="padding-left:10px;">
+                <b>投票管理</b>&nbsp;[<a href="vote_add.php">增加一组投票</a>]
+            </td>
+        </tr>
+        <tr align="center" height="26" bgcolor="#F5F5F5">
+            <td width="8%">投票ID</td>
+            <td width="22%">投票名称</td>
+            <td width="15%">开始时间</td>
+            <td width="15%">结束时间</td>
+            <td width="10%">投票总数</td>
+            <td width="10%">状态</td>
+            <td width="20%">管理</td>
+        </tr>
+        {missra:datalist}
+        <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFCFC';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+            <td>{missra:field.aid /}</td>
+            <td>
+                <a href='{missra:global name="cfg_phpurl" /}/vote.php?aid={missra:field.aid/}&dopost=view' target='_blank'>
+          	{missra:field.votename /}
+          	</a>
+            </td>
+            <td>{missra:field.starttime function="GetDateMk(@me)" /}</td>
+            <td>{missra:field.endtime function="GetDateMk(@me)" /}</td>
+            <td>{missra:field.totalcount /}</td>
+            <td>
+                <?php if($fields['isenable'] == 1){echo "<font color=red>未启用</font>";}else{echo "<font color=green>启用</font>";} ?>
+            </td>
+            <td>
+                <a href='vote_getcode.php?aid={missra:field.aid /}'>[获取代码]</a>
+                <a href='vote_edit.php?aid={missra:field.aid /}&dopost=edit'>[更改]</a> &nbsp;
+                <a href='vote_edit.php?aid={missra:field.aid /}&dopost=delete'>[删除]</a>
+            </td>
+        </tr>
+        {/missra:datalist}
+        <tr align="center" height="35" bgcolor="#F5F5F5">
+            <td colspan="7">{missra:pagelist listsize='6'/}</td>
+        </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+    <title>{missra:field.title/}_{missra:global.cfg_webname/}</title>
+    <meta name="keywords" content="{missra:field name='keywords'/}" />
+    <meta name="description" content="{missra:field name='description' function='html2text(@me)'/}" />
+    <meta http-equiv="mobile-agent" content="format=xhtml;url={missra:global.cfg_mobileurl/}/list.php?tid={missra:field.id/}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/uikit/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/style/common.css" />
+    <script type="text/javascript">
+        if (window.location.toString().indexOf('pref=padindex') != -1) {} else {
+            if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                if (window.location.href.indexOf("?mobile") < 0) {
+                    try {
+                        if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                            window.location.href = "{missra:global.cfg_mobileurl/}/list.php?tid={missra:field.id/}";
+                        } else if (/iPad/i.test(navigator.userAgent)) {} else {}
+                    } catch (e) {}
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body class="picboxlist">
+    {missra:include filename="head.htm"/}
+    <div id="container">
+        <div class="uk-container uk-container-center inner">
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+                    {missra:field name='position'/}
+                </div>
+            </div>
+            <div class="uk-grid">
+                <div class="uk-width-medium-2-3">
+                    <div class="mod-content uk-margin">                        
+                        <ul class="uk-grid uk-grid-medium" data-uk-scrollspy="{cls:'uk-animation-fade uk-invisible', target:'> li > .uk-item', delay:100, repeat: false}">
+                            {missra:list pagesize='15'}
+                            <li class="uk-width-1-1 uk-width-small-1-2 uk-width-medium-1-3 item-{$img.index}">
+                                <div class="uk-item uk-margin-bottom uk-invisible">
+                                    <figure class="uk-overlay uk-overlay-hover">
+                                        <img class="uk-overlay-scale" src="[field:litpic/]" alt="[field:title/]">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">
+                                            <p><a href="[field:arcurl/]" title="[field:title/]" target="_blank">[field:title/]</a></p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </li>
+                            {/missra:list}
+                        </ul>
+                    </div>
+
+                     <div class="uk-margin-large-top uk-margin-large-bottom">
+                        <ul class="uk-pagination">
+                            {missra:pagelist listitem="info,index,end,pre,next,pageno,option" listsize="5"/}
+                        </ul>
+                    </div>
+                    
+                </div>
+
+                <div class="uk-width-medium-1-3">
+                    <div class="uk-panel uk-panel-box">
+                        <h3 class="uk-panel-title">栏目导航</h3>
+                        <ul class="uk-nav uk-nav-side">
+                            {missra:channel currentstyle="
+                            <li class='uk-active'><a href='~typelink~' class='active thisclass'>~typename~</a></li>"}
+                            <li><a href='[field:typeurl/]'>[field:typename/]</a></li>
+                            {/missra:channel}
+                        </ul>
+                    </div>
+
+                    <div id="listRtPicAD">
+                        {missra:myad name='listRtPicAD'/}
+                    </div>
+
+                    <div class="uk-block">
+                        <div class="headline-v2 bg-color-light">
+                            <h2 class="uk-side-title">热门图集</h2>
+                        </div>
+                        <ul class="uk-grid uk-grid-medium">
+                            {missra:arclist row='5' type='image.hot' orderby=click}
+                            <li class="uk-width-small-1-2">
+                                <div class="uk-margin-bottom">
+                                    <a href="[field:arcurl/]" class="preview"><img src="[field:litpic/]" alt="[field:title function='html2text(@me)'/]" /></a>
+                                    <a href="[field:arcurl/]" target="_blank">[field:title/]</a>
+                                </div>
+                            </li>
+                            {/missra:arclist}
+                        </ul>
+                    </div>
+
+                    <div id="listRtPicAD2">
+                        {missra:myad name='listRtPicAD2'/}
+                    </div>
+
+                    <div class="uk-block">
+                        <div class="headline-v2 bg-color-light">
+                            <h2 class="uk-side-title">推荐图集</h2>
+                        </div>
+                        <ul class="uk-grid uk-grid-medium">
+                            {missra:arclist row='8' type='image.commend'}
+                            <li class="uk-width-small-1-2">
+                                <div class="uk-margin-bottom">
+                                    <a href="[field:arcurl/]" class="preview"><img src="[field:litpic/]" alt="[field:title function='html2text(@me)'/]" /></a>
+                                    <a href="[field:arcurl/]" target="_blank">[field:title/]</a>
+                                </div>
+                            </li>
+                            {/missra:arclist}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="innerfooterAD">
+        {missra:myad name='innerfooterAD'/}
+    </div>
+    {missra:include filename="footer.htm"/}
+	
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/uikit/js/uikit.min.js" ></script>
+	<script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/app.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
+	
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+    <title>搜索页_{missra:global.cfg_webname/}</title>
+    <meta name="keywords" content="{missra:field name='keywords'/}" />
+    <meta name="description" content="{missra:field name='description' function='html2text(@me)'/}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/uikit/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/style/common.css" />
+</head>
+
+<body class="search-page">
+    <div id="header" class="mi-header">
+        <div class="top-links">
+            <div class="uk-container uk-container-center">
+                <ul class="mi-subnav uk-subnav uk-subnav-line">
+                    <li><a href="{missra:global.cfg_cmsurl/}">Missra首页</a></li>
+                    <li><a href="{missra:global.cfg_cmsurl/}/plus/heightsearch.php" target="_blank">高级搜索</a></li>
+                    <li><a href="{missra:global.cfg_cmsurl/}/data/sitemap.html" target="_blank">网站地图</a></li>
+                    <li><a href="{missra:global.cfg_cmsurl/}/tags.php">TAG标签</a></li>
+                    <li><a href="{missra:global.cfg_dataurl/}/rssmap.html" class="rss">RSS订阅</a></li>
+                    <li><a href="" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('{missra:global.cfg_basehost/}');">设为首页</a></li>
+                    <li><a href="javascript:window.external.AddFavorite('{missra:global.cfg_basehost/}','{missra:global.cfg_webname/}')">加入收藏</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="search-banner uk-margin">
+            <div class="uk-container uk-container-center">
+                <div class='uk-grid'>
+                    <div class="logo-box uk-width-medium-1-4">
+                        <a href="{missra:global.cfg_basehost/}">
+                            <img src="{missra:global.cfg_templets_skin/}/images/logo.png" alt="{missra:global.cfg_webname/}" />
+                        </a>
+                    </div>
+                    <div class="search-box uk-width-medium-3-4">
+                        <form class="mi-form uk-form" name="formsearch" action="{missra:global.cfg_cmsurl/}/plus/search.php">
+                            <fieldset>
+                                <input name="q" type="text" id="search-keyword" class="mi-input search-keyword" value="{missra:global name='keyword' function='RemoveXSS(@me)'/}" onfocus="if(this.value=='关键字'){this.value='';}" onblur="if(this.value==''){this.value='关键字';}" />
+                                <select name="searchtype" class="search-option" id="search-option">
+                                    <option value="title" selected='1'>检索标题</option>
+                                    <option value="titlekeyword">智能模糊</option>
+                                </select>
+                                <input type="submit" class="mi-input-button search-submit uk-button" value="搜索" />
+                                <a href="heightsearch.php">高级搜索</a>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div class="uk-container uk-container-center inner">
+            <div class="result-bar">
+                <div class="uk-margin">
+                    <h3>搜索 <strong>{missra:global name='keyword' function='RemoveXSS(@me)'/}</strong> 的结果</h3>
+                </div>
+            </div>
+            <div class="result-list">
+                <div class="uk-grid">
+                    <div class="uk-width-medium-2-3">
+                        <div class="resultlist">
+                            {missra:list pagesize='10' titlelen=80}
+                            <article class="uk-article">
+                                <h2 class="uk-article-lead"><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h2>
+                                <div class="uk-article-meta">
+                                    <div class="uk-margin-bottom">
+                                        <span class="cat">栏目：<a href="[field:typeurl/]" target="_blank">[field:typename/]</a></span> &nbsp;
+                                        <span class="date">日期：[field:pubdate function="MyDate('Y-m-d',@me)"/]</span> &nbsp;
+                                        <span class="clicks">阅读：[field:click/]次</span>
+                                    </div>
+                                </div>
+                                <div class="uk-grid uk-margin-bottom">
+                                    <div class="uk-width-1-1 uk-width-medium-1-4">
+                                        [field:array runphp='yes']@me = (empty(@me['litpic']) ? "" : "
+                                        <a class='uk-thumbnail' href='{@me["arcurl"]}' target='_blank'><img src='{@me["litpic"]}' /></a>"); [/field:array]
+                                    </div>
+                                    <div class="uk-width-1-1 uk-width-medium-3-4">
+                                        <div class="summary">
+                                            [field:description/]
+                                        </div>
+                                        <div class="arc-url">
+                                            <a href="[field:arcurl/]" class='mi-text-overflow-ellipsis' target="_blank">[field:global.cfg_basehost/][field:arcurl/]</a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            {/missra:list}
+                            
+                            <div class="uk-margin">
+                                <ul class="mi-pagination uk-pagination">
+                                    {missra:pagelist listitem="info,index,end,pre,next,pageno,option" listsize="5"/}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-medium-1-3">
+                        <div class="sidebar">
+                            <h2>相关搜索</h2>
+                            <ul>
+                                <li>{missra:likewords num='8'/}</li>
+                            </ul>
+                            <div class="sidebar_banner">
+                                <script src='{missra:global.cfg_cmsurl/}/plus/ad_js.php?aid=16' type='text/javascript'></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    <div id="innerfooterAD">
+        {missra:myad name='innerfooterAD'/}
+    </div>
+        
+    <div id="footer">
+        <div class="uk-container uk-container-center inner">
+            <div class="copyright">{missra:global.cfg_powerby/}&nbsp;&nbsp;{missra:global.cfg_beian/}</div>
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/uikit/js/uikit.min.js" ></script>
+	
+</body>
+
+</html>

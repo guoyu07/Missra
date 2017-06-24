@@ -1,0 +1,333 @@
+/*
+ * Home styles
+ ========================================================================== */
+
+
+/* Layout
+ ========================================================================== */
+
+/*
+ * Blocks
+ */
+
+.index-section {
+    padding: 50px 0;
+}
+
+
+/* Tablet and bigger */
+
+@media (min-width: 768px) {
+    .index-section {
+        padding: 90px 0;
+    }
+}
+
+
+/* Large screen and bigger */
+
+@media (min-width: 1220px) {
+    .index-section {
+        padding: 120px 0;
+    }
+}
+
+
+/*
+ * Sections
+ */
+
+.index-section .uk-heading-large {
+    margin-bottom: 20px;
+}
+
+.index-section .uk-text-large {
+    margin-bottom: 60px;
+}
+
+.index-section-color-1 {
+    background: #2ba3d4 url("../images/home/bg_teaser.svg") 50% 50% no-repeat;
+}
+
+
+/* Desktop and bigger */
+
+@media (max-width: 959px) {
+    .index-section-color-1 {
+        background-image: none;
+    }
+}
+
+.index-section-color-2 {
+    background: #3dc0f1;
+}
+
+.index-section-colored,
+.index-section-colored h1,
+.index-section-colored h2,
+.index-section-colored a:not([class]) {
+    color: #fff !important;
+}
+
+.index-section-color-2 a {
+    text-decoration: underline;
+}
+
+.index-section-color-white {
+    background: #fff;
+}
+
+
+/* Tablet and bigger */
+
+@media (min-width: 768px) {
+    .index-section-color-white .uk-grid-divider:not(:empty)>[class*='uk-width-medium-']:not(.uk-width-medium-1-1):nth-child(n+2) {
+        border-left: 1px dashed #ddd;
+    }
+    .index-section-color-2 .uk-grid-divider:not(:empty)>[class*='uk-width-medium-']:not(.uk-width-medium-1-1):nth-child(n+2) {
+        border-left: 1px dashed rgba(255, 255, 255, 0.4);
+    }
+}
+
+
+/*
+ * Header section
+ */
+
+.index-button-download {
+    margin: -30px 0 15px 0;
+    /* Style */
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border: none;
+    color: #2ba3d4 !important;
+    /* Size */
+    min-height: 50px;
+    padding: 0 30px;
+    line-height: 50px;
+    font-size: 18px;
+}
+
+.index-button-download:hover {
+    background: #82cff0;
+    color: #fff !important;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    -webkit-transition: background-color .15s ease-in-out;
+    transition: background-color .15s ease-in-out;
+}
+
+.index-button-download:focus,
+.index-button-download:active {
+    background: #2e93bc;
+    color: #fff !important;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15), inset 0 -1px 0px rgba(0, 0, 0, 0.05), inset 1px 0px 0px rgba(0, 0, 0, 0.05), inset -1px 0px 0px rgba(0, 0, 0, 0.05);
+    -webkit-transition: background-color .05s ease-in-out;
+    transition: background-color .05s ease-in-out;
+}
+
+.index-image-pull {
+    margin-bottom: -10px;
+}
+
+
+/*
+ * Community
+ */
+
+.index-margin-large-bottom {
+    margin-bottom: 80px;
+}
+
+.index-panel-link,
+.index-panel-link:hover {
+    text-decoration: none;
+    color: #444;
+}
+
+.index-panel-link {
+    padding: 30px 30px 60px 30px;
+    border: 1px solid #e5e5e5;
+}
+
+.index-panel-link:after {
+    content: "";
+    display: none;
+    position: absolute;
+    height: 5px;
+    right: -1px;
+    left: -1px;
+    bottom: -1px;
+    background: #0BA1D8;
+}
+
+.index-panel-link:hover:after {
+    display: block;
+}
+
+.index-panel-link:hover h2 {
+    color: #0BA1D8;
+}
+
+
+/* Only phones */
+
+.index-grid-margin-large .uk-grid-margin {
+    margin-top: 50px;
+}
+
+.index-icon {
+    position: relative;
+    width: 80px;
+    margin: -60px auto 0 auto;
+    border-radius: 5px;
+    background: #0BA1D8;
+    line-height: 80px;
+    color: #fff;
+}
+
+.index-icon:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: 10px solid #0BA1D8;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom: none;
+}
+
+.index-panel-link {
+    -webkit-backface-visibility: hidden;
+}
+
+.index-panel-link:hover .index-icon {
+    transform: translateY(5px);
+    -webkit-transform: translateY(5px);
+    transition: all 0.1s ease-out;
+    -webkit-transition: all 0.1s ease-out;
+}
+
+
+/*
+ * Footer
+ */
+
+.index-footer {
+    background: #252525;
+}
+
+.index-footer .uk-subnav-line>li:before {
+    border-color: #ddd;
+}
+
+.index-footer,
+.index-footer a {
+    color: #ddd !important;
+}
+
+.index-footer a:hover {
+    color: #fff !important;
+}
+
+
+/* UIkit component modifiers
+ ========================================================================== */
+
+
+/*
+ * Navbar
+ */
+
+.index-navbar {
+    position: relative;
+    padding: 15px 0;
+    border: none;
+    background: #000;
+}
+
+.index-navbar .uk-navbar-content,
+.index-navbar .uk-navbar-brand,
+.index-navbar .uk-navbar-toggle {
+    height: 40px;
+    margin-top: 0;
+    text-shadow: none;
+}
+
+.index-navbar .uk-navbar-nav>li>a {
+    height: 40px;
+    margin: 0;
+    border: none;
+    border-radius: 3px !important;
+    text-shadow: none;
+    font-size: 15px;
+}
+
+.index-navbar .uk-navbar-nav>li {
+    margin-left: 20px;
+}
+
+
+/* Hover */
+
+.index-navbar .uk-navbar-nav>li:hover>a,
+.index-navbar .uk-navbar-nav>li>a:focus,
+.index-navbar .uk-navbar-nav>li.uk-open>a {
+    border: none;
+    color: #FFF;
+    background: none;
+}
+
+/* Active */
+
+.index-navbar .uk-navbar-nav>li.uk-active>a {
+    background-color: #2BA3D4;
+    color: #FFF;
+}
+
+
+/* OnClick */
+
+.index-navbar .uk-navbar-nav>li>a:active {
+    background-color: transparent;
+}
+
+
+/*
+ * Nav
+ */
+
+.index-nav>li>a {
+    color: #777;
+}
+
+
+/* Hover */
+
+.index-nav>li>a:hover,
+.index-nav>li>a:focus,
+.index-nav>li.uk-active>a {
+    background: #F5F5F5;
+    color: #444;
+}
+
+
+/* Sub-object: `nav-header` */
+
+.index-nav .uk-nav-header {
+    color: #222;
+    font-weight: bold;
+}
+
+
+/*
+ * Nav
+ */
+
+.index-subnav>li:nth-child(n+2) {
+    margin-left: 20px;
+}

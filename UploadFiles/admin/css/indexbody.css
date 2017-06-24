@@ -1,0 +1,192 @@
+.title {
+	color: #666600;
+	font-weight: bold;
+}
+
+.title span {
+	padding-left: 3px;
+}
+
+#addTab {
+	position: absolute;
+	left: 455px;
+	top: 150px;
+	width: 360px;
+	height: auto;
+	z-index: 2;
+	background-color: #FFFFFF;
+	border: 1px solid #889D8F;
+	padding: 0px;
+	display: none;
+	overflow: hidden;
+}
+
+#editTab {
+	position: absolute;
+	left: 40%;
+	top: 120px;
+	width: auto;
+	height: auto;
+	z-index: 1;
+	background-color: #FFFFFF;
+	border: 1px solid #889D8F;
+	padding: 0px;
+	display: none;
+}
+
+.txt {
+	float: left;
+}
+
+.updatedvt {
+	line-height: 23px;
+	padding-left: 3px;
+	width: 98%;
+}
+
+.upinfotitle {
+	border-bottom: 1px solid #cccccc;
+	color: red;
+	font-weight: bold;
+	line-height: 26px;
+}
+
+.verline {
+	border-bottom: 1px dashed #cccccc;
+	line-height: 26px;
+}
+
+.itemTable {
+	margin-top: 8px;
+	background: #CBD8AC;
+}
+
+#loaddiv {
+	top: 0;
+	left: 0;
+	background: #cccccc;
+	filter: Alpha(opacity=70);
+	position: absolute;
+	z-index: 10000;
+	width: 100%;
+	height: 100%;
+}
+
+#mainmsg {
+	overflow: hidden;
+}
+
+.rightside {
+	width: 49%;
+	float: left;
+	margin-right: 1%;
+	height: 670px;
+	scrollbar-face-color: #ffffff;
+	scrollbar-highlight-color: #919192;
+	scrollbar-shadow-color: #919192;
+	scrollbar-3dlight-color: #ffffff;
+	scrollbar-arrow-color: #919192;
+	scrollbar-track-color: #ffffff;
+	scrollbar-darkshadow-color: #ffffff;
+}
+
+.column {
+	width: 49.5%;
+	float: left;
+}
+
+.placeholder {
+	width: 98%;
+	margin-left: 1%;
+	background: #f0f0f0;
+	border: 1px dashed #ddd;
+}
+
+.dbox {
+	width: 98%;
+	margin: 0 0 10px 10px;
+	border: 1px solid #DDD;
+}
+
+.dbox dt {
+	height: 28px;
+	line-height: 28px;
+	font-weight: bold;
+	color: #454545;
+}
+
+.dbox dt .l {
+	float: left;
+	padding-left: 8px;
+}
+
+.dbox dt .r {
+	float: right;
+	padding-right: 8px;
+}
+
+.dbox dt.lside {
+	border-bottom: 1px solid #DDD;
+	background-color: #F0F0F0;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+}
+
+.dbox dt.rside {
+	border-bottom: 1px solid #DEEAB6;
+	background: url(../images/wbg.gif) repeat-x;
+}
+
+.dbox dd {
+	padding: 0px;
+}
+
+.dbox dd.intable {
+	padding-top: 3px;
+}
+
+#updatetest {
+	padding: 6px;
+}
+
+#quickmenu {
+	width: 100%;
+	height: 46px;
+	overflow: hidden;
+}
+
+#quickmenu .icoitem {
+	float: left;
+	height: 24px;
+	line-height: 24px;
+	margin-top: 12px;
+	padding-left: 30px;
+	overflow: hidden;
+}
+
+.dboxtable {
+	border-spacing: 0
+}
+
+ul.dboxtable {
+	margin: 10px 0;
+	padding-left: 30px;
+}
+
+.dboxtable li {
+	list-style-type: circle;
+}
+
+.dboxtable td.nline {
+	padding: 0 10px;
+}
+
+.dboxtable .nline {
+	line-height: 26px;
+}
+
+.footer {
+	border-top: 1px solid #DDD;
+	line-height: 36px;
+	margin-top: 8px;
+	font-family: Verdana, Geneva, sans-serif;
+}

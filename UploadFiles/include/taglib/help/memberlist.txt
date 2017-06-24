@@ -1,0 +1,9 @@
+会员信息调用标签
+>>missra>>
+{missra:memberlist orderby='scores' row='20'}
+<a href="../member/index.php?uid={missra:field.userid /}">{missra:field.userid /}</a>
+<span>{missra:field.scores /}</span>
+{/missra:memberlist}
+>>missra>>
+orderby = 'scores' 按积分排序
+row = '6' 调用数目

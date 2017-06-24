@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+    <title>增加自定义标记</title>
+    <link href='css/base.css' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="js/calendar/calendar.js"></script>
+    <script type="text/javascript">
+        function checkSubmit() {
+            if (document.form1.tagname.value == "") {
+                alert("标记名称不能为空！");
+                document.form1.tagname.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="panel-box margin-bottom-10 text-indent-10" ><strong><a href="mytag_main.php">自定义标记管理</a></strong>&gt;&gt;增加新标记</div>
+
+    <table width="98%" align="center" border="0" cellspacing="1" cellpadding="4" bgcolor="#E0E0E0">
+        <form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
+            <input type='hidden' name='dopost' value='save' />
+            <tr bgcolor="#FFF">
+                <td height="26" colspan="3" style="padding-left:10px">
+                    <strong>自定义标记的调用方法：</strong><br/> 
+                    {missra:mytag name='标记名称' ismake='是否含板块代码（yes 或 no）' typeid='栏目ID'/}<br/> 
+                    1、name 标记名称，该项是必须的属性，以下 2、3是可选属性；<br/> 
+                    2、ismake 默认是 no 表示设定的纯HTML代码， yes 表示含板块标记的代码；<br/>
+                    3、typeid 表示所属栏目的ID，默认为 0 ，表示所有栏目通用的显示内容，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目ＩＤ。
+                </td>
+            </tr>
+            <tr bgcolor="#FFF">
+                <td width="15%" height="26" align="center">所属栏目：</td>
+                <td colspan="2">
+                <?php
+                    $tl = new TypeLink(0);
+                    $typeOptions = $tl->GetOptionArray(0,0,0);
+                    echo "<select name='typeid' style='width:300'>\r\n";
+                    echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>\r\n";
+                    echo $typeOptions;
+                    echo "</select>";
+                ?>
+                </td>
+            </tr>
+            <tr bgcolor="#FFF">
+                <td height="26" align="center">标记名称：</td>
+                <td colspan="2"><input name="tagname" type="text" id="tagname" /></td>
+            </tr>
+            <tr bgcolor="#FFF">
+                <td height="26" align="center">时间限制：</td>
+                <td colspan="2"><input name="timeset" type="radio" value="0" checked='1' /> 永不过期
+                    <input type="radio" name="timeset" value="1" /> 在设内时间内有效
+                </td>
+            </tr>
+            <tr bgcolor="#FFF">
+                <td height="26" align="center">开始时间：</td>
+                <td colspan="2">
+                    <input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" />
+                    <script type="text/javascript">
+                        Calendar.setup({
+                            inputField: "starttime",
+                            ifFormat: "%Y-%m-%d %H:%M",
+                            showsTime: true,
+                            timeFormat: "24"
+                        });
+                    </script>
+                </td>
+            </tr>
+            <tr bgcolor="#FFF">
+                <td height="26" align="center">结束时间：</td>
+                <td colspan="2">
+                    <input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" />
+                    <script type="text/javascript">
+                        Calendar.setup({
+                            inputField: "endtime",
+                            ifFormat: "%Y-%m-%d %H:%M",
+                            showsTime: true,
+                            timeFormat: "24"
+                        });
+                    </script>
+                </td>
+            </tr>
+            <tr bgcolor="#FFF">
+                <td height="80" align="center">正常显示内容：</td>
+                <td width="76%">
+                    <textarea name="normbody" id="normbody" style="width:80%;height:100"></textarea>
+                </td>
+                <td width="9%">&nbsp;</td>
+            </tr>
+            <tr bgcolor="#FFF">
+                <td height="80" align="center">过期显示内容：</td>
+                <td>
+                    <textarea name="expbody" id="expbody" style="width:80%;height:100"></textarea>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr bgcolor="#F5F5F5">
+                <td height="35" align="center">&nbsp;</td>
+                <td colspan="2">
+                    <input name="imageField" type="submit" value="确定" />
+                </td>
+            </tr>
+        </form>
+    </table>
+
+</body>
+
+</html>

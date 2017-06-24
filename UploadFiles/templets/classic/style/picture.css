@@ -1,0 +1,16 @@
+a.c1{
+	padding:3px 8px 3px 8px;
+	background-color:#0087BD;
+	color:#F9F9F9;
+}
+a.c1:hover{
+	color:#F9F9F9;
+	background-color:#0087BD;
+}
+a.c2{
+	color:#F9F9F9;
+	background-color:#0087BD;
+}
+a img {
+	border:none;
+}

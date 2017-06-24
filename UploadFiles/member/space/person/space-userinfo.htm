@@ -1,0 +1,51 @@
+
+    <dl class="border">
+      <dt class="caption"><strong>个人资料</strong></dt>
+      <dd class="body" id="userInfo"> <a class="pic" href="index.php?uid={missra:var.userid function="urlencode(@me)" /}&action=infos" title="我的资料">{missra:if $_vars['face']=='' } <img src="space/person/common/images/noavatar.gif" alt="<?php echo $row['uname']; ?>还没设置头像" /> {else} <img src="{missra:var.face/}" alt="{missra:var.uname/}的头像" /> {/missra:if}</a>
+        <div class="textCenter dashed pB10">
+          <h4 class="mT5 mB10">{missra:var.uname /}</h4>
+          <ul class="w50 buttonBlue grayA">
+            <li class="mB5"><a href="index.php?action=guestbook&uid={missra:var.userid/}"><span>给我留言</span></a></li>
+            <li class="mB5"><a href="pm.php?dopost=send&uid={missra:var.userid/}"><span>发送消息</span></a></li>
+            <li><a href="index.php?action=newfriend&uid={missra:var.userid/}"><span>加为好友</span></a></li>
+            <li><a href="index.php?action=blackfriend&uid={missra:var.userid/}"><span>加黑名单</span></a></li>
+          </ul>
+          <div class="clear"></div>
+        </div>
+        <ul class="mT10 mL10 mB10 lh20">
+          <li>会员等级：{missra:var.membername/}</li>
+          <li>会员积分：{missra:var.scores/}分</li>
+          <li>空间访问：{missra:var.homecount/}次</li>
+        </ul>
+      </dd>
+    </dl>
+    <dl class="border mT10">
+      <dt class="caption"><strong>公告</strong></dt>
+      <dd class="body lh20 pB10">{missra:var.spacenews/}</dd>
+    </dl>
+    <dl class="border mT10">
+      <dt class="caption"><strong>链接</strong></dt>
+      <dd class="body lh20">
+        <ul class="list2 mB5">
+          <?php
+			$dsql->Execute('fl',"Select * From `#@__member_flink` where mid='{$_vars['mid']}' ");
+				while($arr = $dsql->GetArray('fl'))
+					{echo "<li><a href='{$arr['url']}' target='_blank'>{$arr['title']}</a></li>\r\n";}
+			?>
+        </ul>
+      </dd>
+    </dl>
+    <dl class="border mT10">
+      <dt class="caption"><strong>访客</strong></dt>
+      <dd class="body"> {missra:newvisitor row=6}
+        <div class="allList mB10">
+          <div class="img"> <a href="{missra:field.url/}" title="{missra:field.uname/}" target="_blank"><img src="{missra:field.face/}" width="50" height="50" alt="{missra:field.uname/}的头像" /></a> </div>
+          <div class="txt">
+            <h5 class="p1 mB5 blackA"><a href="{missra:field.url/}" target="_blank" title="{missra:field.uname/}">{missra:field.uname/}</a></h5>
+            <p class="p2">{missra:field.sign function="cn_substr(@me,60)" /}</p>
+            <p class="p2 clear">访问：{missra:var.logintime function="MyDate('m-d h:i',@me)" /}</p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        {/missra:newvisitor} </dd>
+    </dl>

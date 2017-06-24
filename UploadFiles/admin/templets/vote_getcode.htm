@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+    <title>获取代码</title>
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="panel-box margin-bottom-10 text-indent-10"><strong><a href="vote_main.php">投票管理</a>&gt;&gt;获取代码</strong></div>
+    <table width="98%" align="center" border="0" cellspacing="1" cellpadding="2" bgcolor="#E0E0E0">
+        <tr bgcolor="#F5F5F5" height="26">
+            <td width="100%" style="padding-left:15px;">在封面或主页模板中使用的标记：</td>
+        </tr>
+        <tr bgcolor="#FFF">
+            <td>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <form name="form1" action="tag_test_action.php" target="stafrm" method="post">
+                        <input type="hidden" name="showsource" value="no">
+                        <tr>
+                            <td width="600" height="100" style="padding-left:15px;">
+                                <textarea name="partcode" cols="80" rows="5" id="partcode">{missra:vote id='<?php echo $aid?>' lineheight='22' tablewidth='100%' titlebgcolor='#EDEDED' titlebackground='' tablebgcolor='#FFFFFF'}{/missra:vote}</textarea>
+                            </td>
+                            <td rowspan="2">
+                                <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="50" align="center">
+                                <input type="submit" name="Submit" value="提交测试">
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </td>
+        </tr>
+        <tr bgcolor="#F5F5F5" height="26">
+            <td style="padding-left:15px;">在封面或主页模板中使用的JS：</td>
+        </tr>
+        <tr bgcolor="#FFF">
+            <td height="120" style="padding-left:15px;">
+                <textarea name="htmlf" cols="80" rows="5" id="htmlf"><script type="text/javascript" src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea>
+            </td>
+        </tr>
+        <tr bgcolor="#F5F5F5" height="26">
+            <td style="padding-left:15px;">默认生成的表单HTML：</td>
+        </tr>
+        <tr bgcolor="#FFF">
+            <td height="200" style="padding-left:15px;">
+                <textarea name="htmlf" cols="80" rows="10" id="htmlf"><?php $vt = new MiVote($aid); echo $vt->GetVoteForm(); $vt->Close(); ?></textarea>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

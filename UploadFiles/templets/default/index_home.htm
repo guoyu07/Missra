@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+    <title>{missra:global.cfg_webname/} - {missra:global.cfg_indexname/}</title>
+    <meta name="description" content="{missra:global.cfg_description/}" />
+    <meta name="keywords" content="{missra:global.cfg_keywords/}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon-precomposed" href="{missra:global.cfg_templets_skin/}/images/home/apple-touch-icon.png" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/uikit/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/uikit/css/uikit.almost-flat.css" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/style/home.css" />
+</head>
+
+<body class="index">
+    <div class="index-header">
+        <nav class="index-navbar uk-navbar uk-navbar-attached">
+            <div class="uk-container uk-container-center inner">
+
+                <a class="uk-navbar-brand uk-hidden-small" href="index.html"><img class="uk-margin uk-margin-remove" src="{missra:global.cfg_templets_skin/}/images/home/logo_missra.svg" width="90" height="30" title="UIkit" alt="UIkit"></a>
+
+                <ul class="uk-navbar-nav uk-hidden-small">
+                    {missra:channel type='top' row='10' currentstyle="
+                    <li class='hover'><a href='~typelink~' ~rel~>~typename~</a></li>"}
+                    <li><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>
+                    {/missra:channel}
+                </ul>
+
+                <a href="#index-offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+
+                <div class="uk-navbar-brand uk-navbar-center uk-visible-small"><img src="{missra:global.cfg_templets_skin/}/images/home/logo_missra.svg" width="90" height="30" title="UIkit" alt="UIkit"></div>
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="index-section index-section-color-1 index-section-colored">
+        <div class="uk-container uk-container-center uk-text-center">
+
+            <img class="index-logo" src="{missra:global.cfg_templets_skin/}/images/home/logo_missra.svg" width="281" height="217" title="UIkit" alt="UIkit">
+
+            <p class="uk-text-large">一款轻量级、模块化的前端框架<br class="uk-hidden-small">可快速构建强大的web前端界面.</p>
+
+            <a class="uk-button index-button-download" data-uikit-download>下载 Missra</a>
+
+            <ul class="index-subnav uk-subnav uk-flex-center">
+                <li><a href="https://chzng.github.io/missra" target="_blank"><i class="uk-icon-github"></i> GitHub</a></li>
+                <li><a href="https://github.com/chzng/missra/network" target="_blank"><i class="uk-icon-code-fork"></i> Forks</a></li>
+                <li><a href="http://bbs.missra.com" target="_blank"><i class="uk-icon-comments-o"></i> Community</a></li>
+                <li data-uikit-version>Version 1.0</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="index-section index-section-color-2 index-section-colored">
+        <div class="uk-container uk-container-center uk-text-center">
+
+            <h1 class="uk-heading-large">Features</h1>
+
+            <p class="uk-text-large">Missra为您提供了全面的HTML、CSS及JS组件，<br class="uk-hidden-small">它们使用简单，容易定制和扩展。</p>
+
+            <div class="uk-grid" data-uk-grid-margin>
+
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                        <img class="index-image-pull" src="{missra:global.cfg_templets_skin/}/images/home/icon_less.svg" width="200" height="140" alt="LESS">
+                        <h2 class="uk-margin-top-remove">LESS</h2>
+                        <p>Missra 基于<a href="http://lesscss.org">LESS</a> &amp; <a href="http://sass-lang.com">SASS </a>开发，代码结构清晰简单，易于扩展和维护。</p>
+                    </div>
+                </div>
+
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                        <img class="index-image-pull" src="{missra:global.cfg_templets_skin/}/images/home/icon_components.svg" width="200" height="140" alt="Components">
+                        <h2 class="uk-margin-top-remove">组件</h2>
+                        <p>体积小、反应灵敏的响应式组件，使用一致的、无冲突的命名规则。</p>
+                    </div>
+                </div>
+
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                        <img class="index-image-pull" src="{missra:global.cfg_templets_skin/}/images/home/icon_themes.svg" width="200" height="140" alt="Themes">
+                        <h2 class="uk-margin-top-remove">定制</h2>
+                        <p>可根据 Missra 基本的风格及样式，轻松地自定义创建出自己喜欢的主题样式。</p>
+                    </div>
+                </div>
+
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                        <img class="index-image-pull" src="{missra:global.cfg_templets_skin/}/images/home/icon_responsive.svg" width="200" height="140" alt="Responsive">
+                        <h2 class="uk-margin-top-remove">响应式</h2>
+                        <p>根据不同的屏幕分辨率与上网设备，UIKit 会自动做出响应，提供一致的体验。</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="index-section index-section-color-white">
+        <div class="uk-container uk-container-center uk-text-center">
+
+            <h1 class="index-margin-large-bottom">Community</h1>
+
+            <div class="uk-grid index-grid-margin-large" data-uk-grid-match="{target:'.uk-panel'}" data-uk-grid-margin>
+
+                <div class="uk-width-medium-1-3">
+                    <a class="uk-panel index-panel-link" href="https://twitter.com/getuikit">
+                        <div class="index-icon"><i class="uk-icon-rss uk-icon-large"></i></div>
+                        <h2>RSS</h2>
+                        <p>订阅Missra 获取更详细的内容和更新计划，更详细的使用教程。</p>
+                    </a>
+                </div>
+
+                <div class="uk-width-medium-1-3">
+                    <a class="uk-panel index-panel-link" href="https://github.com/uikit/uikit/issues">
+                        <div class="index-icon"><i class="uk-icon-github uk-icon-large"></i></div>
+                        <h2>GitHub</h2>
+                        <p>在GitHub上“clone”Missra，并发送给Missra一个pull请求，您可以提交一个错误或提出一个新的问题。</p>
+                    </a>
+                </div>
+
+                <div class="uk-width-medium-1-3">
+                    <a class="uk-panel index-panel-link" href="http://bbs.missra.com" target="_blank">
+                        <div class="index-icon"><i class="uk-icon-comments-o uk-icon-large"></i></div>
+                        <h2>WeChat</h2>
+                        <p>关注Missra的微信公众号 可以第一时间接收相关资讯和更新，欢迎反馈和提问。</p>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="index-section index-section-color-2 index-section-colored">
+        <div class="uk-container uk-container-center uk-text-center">
+
+            <h1 class="uk-heading-large uk-margin-bottom-remove">开放源码</h1>
+
+            <p class="uk-text-large">Missra 是一款开源的前端UI界面框架，<br class="uk-hidden-small">你可以无任何限制的使用 Missra 来创建自己的风格。</p>
+
+            <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+
+                <div class="uk-width-1-1 uk-width-medium-1-3">
+                    <div class="uk-panel">
+                        <h2>MIT 许可协议</h2>
+                        <p>Missra 是基于MIT许可协议的开源项目。它完全免费，你可以无任何限制的使用、复制、合并、发布及分发这个框架。</p>
+                    </div>
+                </div>
+
+                <div class="uk-width-medium-1-3">
+                    <div class="uk-panel">
+                        <h2>我的贡献者</h2>
+                        <p>非常感谢 LESS、jQuery、normalize.css及FontAwesome，没有这些强大的开源项目就不可能有Missra。</p>
+                    </div>
+                </div>
+
+                <div class="uk-width-medium-1-3">
+                    <div class="uk-panel">
+                        <h2>积极的开发</h2>
+                        <p>Missra的是<a href="http://www.missra.com">Missra</a>利用此在开发Missra主题的丰富经验而开发的前端框架。</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="index-footer index-section">
+        <div class="uk-container uk-container-center uk-text-center">
+
+            <ul class="uk-subnav uk-subnav-line uk-flex-center">
+                <li><a href="https://github.com/chzng/missra">GitHub</a></li>
+                <li><a href="https://github.com/chzng/missra/issues">Issues</a></li>
+                <li><a href="https://github.com/chzng/missra/blob/master/CHANGELOG.md">Changelog</a></li>
+            </ul>
+
+            <div class="uk-panel">
+                <p><a href="http://www.missra.com">Missra</a>倾情创作</p>
+                <a href="index.html"><img src="{missra:global.cfg_templets_skin/}/images/home/logo_missra.svg" width="90" height="30" title="UIkit" alt="UIkit"></a>
+            </div>
+
+        </div>
+		
+		<div class="hidden">
+			<!--百度统计-->
+			{missra:global.cfg_web_stats/}
+		</div>
+		
+    </div>
+
+    <div id="index-offcanvas" class="uk-offcanvas">
+        <div class="uk-offcanvas-bar">
+            <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{ multiple: true }">
+                <li><a href='{missra:global.cfg_cmsurl/}/'>首页</a></li>
+                {missra:channel type='top' row='10'}
+                <li><a href='[field:typeurl/]'>[field:typename/]</a></li>
+                {/missra:channel}
+            </ul>
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/uikit/js/uikit.min.js"></script>
+	
+</body>
+
+</html>

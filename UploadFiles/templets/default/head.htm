@@ -1,0 +1,40 @@
+<div id="header">
+    <nav class="mi-navbar uk-navbar">
+        <div class="uk-container uk-container-center">
+            <a class="uk-navbar-brand uk-hidden-small" href="{missra:global.cfg_cmsurl/}/"><img src="{missra:global.cfg_templets_skin/}/images/logo.png" /></a>
+            <ul class="uk-navbar-nav uk-hidden-small">
+                <li><a href='{missra:global.cfg_cmsurl/}/'>首页</a></li>
+                {missra:channel type='top' row='10' currentstyle="<li class='uk-active'><a href='~typelink~' ~rel~>~typename~</a></li>"}
+                <li><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>
+                {/missra:channel}
+            </ul>
+            <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+            <div class="uk-navbar-brand uk-navbar-center uk-visible-small"><img src="{missra:global.cfg_templets_skin/}/images/logo.png" /></div>
+            
+            <div class="search-toggle mi-display-inline-block">
+                <i class="search-icon uk-icon-search"></i>
+                <span class="search-btn-text mi-cursor-pointer">搜索</span>
+            </div>
+            <div id="searchBox" class="search-box-wrapper hide">
+                <div class="search-box mi-clearfix">
+                    <form class="mi-form uk-form" name="formsearch" action="{missra:global.cfg_cmsurl/}/plus/search.php">
+                        <fieldset>
+                            <input name="q" type="text" class="mi-input search-keyword" id="search-keyword" placeholder="关键字" onfocus="if(this.value=='关键字'){this.value='';}" onblur="if(this.value==''){this.value='关键字';}" />
+                            <select name="searchtype" class="search-option" id="search-option">
+                                <option value="title" selected='1'>检索标题</option>
+                                <option value="titlekeyword">智能模糊</option>
+                            </select>
+                            <input type="submit" class="mi-input-button search-submit uk-button" value="搜索" />
+                        </fieldset>
+                    </form>
+                    <div class="uk-display-inline-block uk-margin-top">
+                    {missra:tag row='5' getall='1' sort='month'}
+                        <a href='[field:link/]'>[field:tag /]</a>&nbsp;
+                    {/missra:tag}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="head-line"></div>
+</div>

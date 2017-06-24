@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+<title>{missra:field.title/}_{missra:global.cfg_webname/}</title>
+<meta name="keywords" content="{missra:field.keywords/}" />
+<meta name="description" content="{missra:field.description function='html2text(@me)'/}" />
+<link href="{missra:global.cfg_templets_skin/}/style/base.css" rel="stylesheet" media="screen" type="text/css" />
+<meta http-equiv="mobile-agent" content="format=xhtml;url={missra:global.cfg_mobileurl/}/view.php?aid={missra:field.id/}">
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="{missra:global.cfg_mobileurl/}/view.php?aid={missra:field.id/}";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+<script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/ajax.js"></script>
+<script type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DiAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("{missra:global.cfg_cmsurl/}/member/ajax_feedback.php");
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DiAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("{missra:field name='phpurl'/}/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DiAjax(taget_obj,false,false,'','','');
+	var url = "{missra:global.cfg_phpurl/}/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DiAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("{missra:global.cfg_phpurl/}/digg_ajax.php?id="+aid);
+}
+-->
+</script>
+</head>
+<body class="articleview">
+{missra:include filename="head2.htm"/} 
+<!-- /header -->
+
+<div class="channel-nav mi-1000 center clear">
+	<div class='sonnav'> {missra:channel type='self' currentstyle="<span><a href='~typelink~' class='thisclass'>~typename~</a></span>"} <span><a href='[field:typeurl/]'>[field:typename/]</a></span>{/missra:channel} </div>
+</div>
+<!-- /channel-nav -->
+
+<div class="mi-1000 center clear mt1">
+	<div class="mod-left">
+		<div class="place"> <strong>当前位置:</strong> {missra:field name='position'/} </div>
+		<!-- /place -->
+		<div class="viewbox">
+			<div class="title">
+				<h2>{missra:field.title/}</h2>
+			</div>
+			<!-- /title -->
+			<div class="info"> <small>时间:</small>{missra:field.pubdate function="MyDate('Y-m-d H:i',@me)"/}<small>来源:</small>{missra:field.source/} <small>作者:</small>{missra:field.writer/} <small>点击:</small><script src="{missra:field name='phpurl'/}/count.php?view=yes&aid={missra:field name='id'/}&mid={missra:field name='mid'/}" type='text/javascript' type="text/javascript"></script>次</div>
+			<!-- /info --> 
+			
+			{missra:field.description runphp='yes'}
+			if(@me<>'' )@me = '<div class="intro">'.@me.'</div>';
+			{/missra:field.description}
+			<div class="content">
+				<div id="contentMidPicAD">{missra:myad name='contentMidPicAD'/}</div>
+				{missra:field.body/}(责任编辑：{missra:adminname/})
+			</div>
+			<!-- /content -->
+			<div class="pagesNav">
+				<ul class="pagelist">
+					{missra:pagebreak/}
+				</ul>
+			</div>
+			<!-- /pages --> 
+			
+			<!-- //顶踩 -->
+			<div class="newdigg" id="newdigg">
+				<div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',{missra:field.id/})">
+					<div class="digg_act">顶一下</div>
+					<div class="digg_num">({missra:field.goodpost/})</div>
+					<div class="digg_percent">
+						<div class="digg_percent_bar"><span style="width:{missra:field.goodper/}%"></span></div>
+						<div class="digg_percent_num">{missra:field.goodper/}%</div>
+					</div>
+				</div>
+				<div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',{missra:field.id/})">
+					<div class="digg_act">踩一下</div>
+					<div class="digg_num">({missra:field.badpost/})</div>
+					<div class="digg_percent">
+						<div class="digg_percent_bar"><span style="width:{missra:field.badper/}%"></span></div>
+						<div class="digg_percent_num">{missra:field.badper/}%</div>
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">getDigg({missra:field.id/});</script> 
+			<!-- //顶踩部份的源码结束 -->
+			
+			<div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+			<div class="handle">
+				<div class="context">
+					<ul>
+						<li>{missra:prenext get='pre'/}</li>
+						<li>{missra:prenext get='next'/}</li>
+					</ul>
+				</div>
+				<!-- /context -->
+				<div class="actbox">
+					<ul>
+						<li id="act-fav"><a href="{missra:field name='phpurl'/}/stow.php?aid={missra:field.id/}" target="_blank">收藏</a></li>
+						<li id="act-err"><a href="{missra:field name='phpurl'/}/erraddsave.php?aid={missra:field.id/}&title={missra:field.title/}" target="_blank">挑错</a></li>
+						<li id="act-pus"><a href="{missra:field name='phpurl'/}/recommend.php?aid={missra:field.id/}" target="_blank">推荐</a></li>
+						<li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+					</ul>
+				</div>
+				<!-- /actbox --> 
+			</div>
+			<!-- /handle --> 
+		</div>
+		<!-- /viewbox --> 
+		
+		<!-- //AJAX评论区 --> 
+		{missra:include file='ajaxfeedback.htm' /} </div>
+	<!-- //左边内容结束 --> 
+	
+	<!-- //右边内容开始 -->
+	<div class="mod-right"> {missra:memberinfos}
+		<div class="infos_userinfo">
+			<dl class="tbox">
+				<dt><strong>发布者资料</strong></dt>
+				<dd> <a href="[field:spaceurl /]" class="userface"><img src="[field:face/]" width="52" height="52" /></a> <a href='[field:spaceurl /]' class="username">[field:uname/]</a> <span class="useract"> <a href="[field:spaceurl /]" class="useract-vi">查看详细资料</a> <a href="[field:spaceurl /]&action=guestbook" class="useract-pm">发送留言</a> <a href="[field:spaceurl /]&action=newfriend" class="useract-af">加为好友</a> </span> <span class="userinfo-sp"><small>用户等级:</small>[field:rankname /]</span> <span class="userinfo-sp"><small>注册时间:</small>[field:jointime function="MyDate('Y-m-d H:m',@me)"/]</span> <span class="userinfo-sp"><small>最后登录:</small>[field:logintime function="MyDate('Y-m-d H:m',@me)"/]</span> </dd>
+			</dl>
+		</div>
+		{/missra:memberinfos}
+		<div class="commend mt1">
+			<dl class="tbox">
+				<dt><strong>推荐内容</strong></dt>
+				<dd>
+					<ul class="d4">
+						{missra:arclist flag='c' titlelen=42 row=6}
+						<li><a href="[field:arcurl/]">[field:title/]</a>
+							<p>[field:description function='cn_substr(@me,80)'/]...</p>
+						</li>
+						{/missra:arclist}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<!-- /commend -->
+		<div id="contentRtPicAD" style="margin:10px auto">{missra:myad name='contentRtPicAD'/}</div>
+		<div class="hot mt1">
+			<dl class="tbox">
+				<dt><strong>热点内容</strong></dt>
+				<dd>
+					<ul class="c1 ico2">
+						{missra:arclist row=10 orderby=click}
+						<li><a href="[field:arcurl/]">[field:title/]</a></li>
+						{/missra:arclist}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div id="contentRtPicAD2" style="margin:10px auto">{missra:myad name='contentRtPicAD2'/}</div>
+	</div>
+	<!-- /mod-right --> 
+</div>
+<div id="innerfooterAD2">{missra:myad name='innerfooterAD2'/}</div>
+{missra:include filename="footer.htm"/} 
+<!-- /footer -->
+
+</body>
+</html>

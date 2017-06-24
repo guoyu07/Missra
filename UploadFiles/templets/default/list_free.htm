@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+    <title>{missra:field.title/}_{missra:global.cfg_webname/}</title>
+    <meta name="keywords" content="{missra:field name='keywords'/}" />
+    <meta name="description" content="{missra:field name='description' function='html2text(@me)'/}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/style/common.css" />
+</head>
+
+<body class="articlelist">
+    {missra:include filename="head.htm"/}
+    <div id="container">
+        <div class="uk-container uk-container-center inner">
+		
+			<div class="uk-grid">
+				<div class="uk-width-1-1">
+					{missra:field name='position'/}
+				</div>
+			</div>
+		
+			<div class="uk-grid">
+				<div class="uk-width-medium-2-3">
+					<div class="listbox">
+						<ul>
+							{missra:freelist/}
+						</ul>
+					</div>
+					<!-- /listbox -->
+					<div class="pagesNav mi-margin-bottom-25">
+						<ul class="pagelist">
+							{missra:pagelist listitem="info,index,end,pre,next,pageno" listsize="5"/}
+						</ul>
+					</div>
+					<!-- /pages -->
+				</div>
+				<!-- /mod-left -->
+
+				<div class="uk-width-medium-1-3">
+				
+					<div class="uk-block">
+						<h3 class="uk-side-title">推荐内容</h3>
+						<ul class="uk-list">
+							{missra:arclist flag='c' titlelen=42 row=6}
+							<li>
+								<a href="[field:arcurl/]">[field:title/]</a>
+								<p>[field:description function='cn_substr(@me,80)'/]...</p>
+							</li>
+							{/missra:arclist}
+						</ul>
+					</div>
+					
+					<div id="listRtPicAD" style="margin:10px auto">{missra:myad name='listRtPicAD'/}</div>
+					
+					<div class="uk-block">
+						<h3 class="uk-side-title">热点内容</h3>
+						<ul class="uk-list uk-list-line">
+							{missra:arclist row=10 titlelen=45 orderby=click}
+							<li>
+								<i class="uk-icon-angle-right">&nbsp;</i>
+								<a href="[field:arcurl/]">[field:title/]</a>
+							</li>
+							{/missra:arclist}
+						</ul>
+					</div>
+					
+					<div id="listRtPicAD2" >{missra:myad name='listRtPicAD2'/}</div>
+					
+				</div>
+            </div>
+        </div>
+    </div>
+	
+    <div id="listRtPicAD2">{missra:myad name='listRtPicAD2'/}</div>
+	
+    {missra:include filename="footer.htm"/}
+	
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/uikit/js/uikit.min.js" ></script>
+	<script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/app.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
+	
+</body>
+
+</html>

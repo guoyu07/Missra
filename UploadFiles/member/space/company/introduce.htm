@@ -1,0 +1,46 @@
+{missra:include file='header.htm' /}
+
+<div id="side" class="left">
+	{missra:include file='side_search.htm' /}
+	{missra:include file='side_class.htm' /}
+	{missra:include file='side_news.htm' /}
+</div>
+
+<!--begin main-->
+<div id="main" class="right">
+
+<div class="box">
+	<h2>公司简介</h2>
+</div>
+<div class="infobox">
+	<div class="introduce">
+		<img src="{missra:var.comface /}" alt="{missra:var.company /}照片" />
+		{missra:var.introduce /}
+	</div>
+	<ul>
+		<li><span>公司名称：</span>{missra:var.company /}</li>
+		<li><span>贸易种类：</span>{missra:var.vocation /}</li>
+		<li><span>主营产品：</span>{missra:var.product /}</li>
+		<li><span>公司规模：</span>{missra:var.cosize /}</li>
+		<li><span>所在地：</span>{missra:var.place /}</li>
+	</ul>
+</div>
+
+<div class="box">
+	<h2>联系方式</h2>
+</div>
+<div class="infobox">
+<ul>
+	<li>联系人：{missra:var.linkman /}</li>
+	<li>电话：{missra:var.tel /}</li>
+	<li>传真：{missra:var.fax /}</li>
+	<li>网址： {missra:var.url /}</li>
+	<li>Email： {missra:var.email /}</li>
+	<li>地址：{missra:var.address /}</li>
+</ul>
+</div>	
+
+</div>
+<!--end main-->
+
+{missra:include file='footer.htm' /}

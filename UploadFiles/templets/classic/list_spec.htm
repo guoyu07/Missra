@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+<title>专题_{missra:global.cfg_webname/}</title>
+<meta name="keywords" content="{missra:field name='keywords'/}" />
+<meta name="description" content="{missra:field name='description' function='html2text(@me)'/}" />
+<link href="{missra:global.cfg_templets_skin/}/style/base.css" rel="stylesheet" media="screen" type="text/css" />
+</head>
+<body class="articlelist">
+{missra:include filename="head.htm"/} 
+<div id="container">
+	<div class="mi-1000 center clear mt1">
+		<div class="mod-left">
+			<div class="place"> <strong>当前位置:</strong> 专题列表 </div>
+			<!-- /place -->
+			<div class="listbox">
+				<ul class="e2">
+					{missra:list pagesize='10'}
+					<li> 
+						[field:array runphp='yes']@me = (empty(@me['litpic']) ? "" : "<a href='{@me['arcurl']}' class='preview' target='_blank'><img src='{@me['litpic']}'/></a>"); [/field:array]<!--//--> 
+						<a href="[field:arcurl/]" class="title">[field:title/]</a>
+						<span class="info">
+							<small>日期：</small>[field:pubdate function="MyDate('Y-m-d',@me)"/]
+							<small>点击：</small>[field:click/]
+						</span>
+						<p class="intro"> [field:description/]... </p>
+					</li>
+					{/missra:list}
+				</ul>
+			</div>
+			<!-- /listbox -->
+			<div class="pagesNav">
+				<ul class="pagelist">
+					{missra:pagelist listitem="info,index,end,pre,next,pageno" listsize="5"/}
+				</ul>
+			</div>
+			<!-- /pages --> 
+		</div>
+		<!-- /mod-left -->
+		
+		<div class="mod-right">
+			<div class="commend">
+				<dl class="tbox">
+					<dt><strong>推荐专题</strong></dt>
+					<dd>
+						<ul class="d4">
+							{missra:arclist flag='c' channelid='-1' titlelen=42 row=6}
+							<li><a href="[field:arcurl/]">[field:title/]</a>
+								<p>[field:description function='cn_substr(@me,80)'/]...</p>
+							</li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<!-- /commend -->
+			<div id="listRtPicAD" style="margin:10px auto">{missra:myad name='listRtPicAD'/}</div>
+			<div class="hot mt1">
+				<dl class="tbox">
+					<dt><strong>热点内容</strong></dt>
+					<dd>
+						<ul class="c1 ico2">
+							{missra:arclist row=10 orderby=click}
+							<li><a href="[field:arcurl/]">[field:title/]</a></li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div id="listRtPicAD2" style="margin:10px auto">{missra:myad name='listRtPicAD2'/}</div>
+		</div>
+		<!-- /mod-right --> 
+	</div>
+</div>
+<div id="innerfooterAD" style="margin:10px auto; width:726px">{missra:myad name='innerfooterAD'/}</div>
+{missra:include filename="footer.htm"/} 
+</body>
+</html>

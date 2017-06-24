@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+    <title>网站类型管理</title>
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" bgcolor="#E0E0E0">
+        <form name="form1" action="friendlink_type.php" method="post">
+            <input type="hidden" name="dopost" value="save">
+            <tr bgcolor="#F5F5F5" height="35">
+                <td height="19" background="images/tbg.gif" colspan="9" style="padding-left:10px;">
+                    <strong><a href="friendlink_main.php">友情链接管理</a></strong>&nbsp; 
+                    [<a href="friendlink_add.php">增加链接</a>]
+                    [<a href="friendlink_type.php">网站类型管理</a>]
+                    [<a href='../plus/flink_add.php' target='_blank'>外部申请表单</a>]
+                </td>
+            </tr>
+            <tr bgcolor="#F5F5F5">
+                <td width="10%" height="26" align="center">类型ID</td>
+                <td width="50%" align="center">类型名称</td>
+                <td align="center">状态</td>
+            </tr>
+            <?php
+                $dsql->SetQuery("Select * From #@__flinktype");
+                $dsql->Execute();
+                $k=0;
+                while($row = $dsql->GetObject()) {
+                $k++;
+            ?>
+                <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>">
+                <tr align="center" bgcolor="#FFFFFF">
+                    <td height="26" style="padding:5px 8px;"><?php echo $row->id; ?></td>
+                    <td height="26" style="padding:5px 8px;"><input name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" type="text" id="pname_<?php echo $k?>" class='pubinputs' style="width:90%" /> </td>
+                    <td height="26" style="padding:5px 8px;"><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" value="1" checked='1' class='np' />保留</td>
+                </tr>
+                <?php
+	                }
+	            ?>
+                <input type="hidden" name="idend" value="<?php echo $k?>">
+                <tr height="26" align="center" bgcolor="#F5F5F5">
+                    <td style="padding:5px 8px;">新增网站类型：</td>
+                    <td style="padding:5px 8px;"><input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%" /> </td>
+                    <td align="center" style="padding:5px 8px;" bgcolor="#FFFFFF"><input name="check_new" type="checkbox" id="check_new" value="1" checked='1' class='np' /> 新增 </td>
+                </tr>
+                <tr bgcolor="#F5F5F5" height="35">
+                    <td height="34" colspan="5" align="center">
+                        <input name="imageField" type="submit" class="np coolbg" value="确定" />
+                    </td>
+                </tr>
+        </form>
+    </table>
+</body>
+
+</html>

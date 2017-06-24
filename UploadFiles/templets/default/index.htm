@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+    <title>{missra:global.cfg_webname/} - {missra:global.cfg_indexname/}</title>
+    <meta name="keywords" content="{missra:field name='keywords'/}" />
+    <meta name="description" content="{missra:field name='description' function='html2text(@me)'/}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/uikit/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="{missra:global.cfg_templets_skin/}/style/common.css" />
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/ajax.js" ></script>
+    <script type="text/javascript">
+        function CheckLogin(){
+            var taget_obj = document.getElementById('_userlogin');
+            myajax = new MiAjax(taget_obj,false,false,'','','');
+            myajax.SendGet2("{missra:global.cfg_cmspath/}/member/ajax_loginsta.php");
+            MiXHTTP = null;
+        }
+    </script>
+</head>
+
+<body class="index">
+    {missra:include filename="head.htm"/}
+    <div id="container">
+        <div class="uk-container uk-container-center inner">
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-small-1-1 uk-width-medium-1-1 uk-width-large-1-3">
+                    <div class="mi-slideshow uk-margin-top">
+                        <div class="uk-slidenav-position" data-uk-slideshow="{autoplay:true, kenburns:true}">
+                            <ul class="uk-slideshow uk-overlay-active">
+                            <!-- image="yes" 表示只显示有图片的内容 -->
+                            {missra:arclist flag='f' row='5'}
+                                <li>
+                                    <img src="[field:litpic/]" alt="[field:title function='html2text(@me)'/]">
+                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">
+                                        <div class="uk-text-center"><a href="[field:arcurl/]" target="_blank">[field:title function='html2text(@me)'/]</a></div>
+                                    </div>
+                                </li>
+                            {/missra:arclist}
+                            </ul>
+                            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="color: rgba(255,255,255,0.4)"></a>
+                            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="color: rgba(255,255,255,0.4)"></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="uk-width-small-1-1 uk-width-medium-1-2 uk-width-large-1-3">
+                    <div class="uk-panel">
+                        <div class="mi-headline">
+                            <h3 class="uk-h3">头条</h3>
+                        </div>
+                        {missra:arclist flag='h' limit='0,2' titlelen=45}
+                        <article class="uk-article">
+                            <h3 class="uk-article-lead">
+                                <i class="uk-icon-newspaper-o"></i><a href="[field:arcurl/]" title="[field:title/]" target="_blank">[field:title/]</a>
+                            </h3>
+                            <div class="summary">
+                                [field:description function='cn_substr(@me,180)'/]...
+                                <a class="readmore" href="[field:arcurl/]" title="[field:title/]" target="_blank">[阅读全文]</a>
+                            </div>
+                        </article>
+                        {/missra:arclist}							
+                    </div>
+                </div>
+
+                <div class="uk-width-small-1-1 uk-width-medium-1-2 uk-width-large-1-3">	
+                    <div class="uk-margin-top">
+                        <ul class="uk-tab" data-uk-tab="{connect:'#tab-content'}">
+                            <li class="uk-active"><a href="#">会员</a></li>
+                            <li><a href="#">踩踩</a></li>
+                            <li><a href="#">评论</a></li>
+                        </ul>
+                        <ul id="tab-content" class="uk-switcher uk-margin-top">
+                            <li class="uk-active">
+                                <div id="_userlogin">
+                                    <div class="userlogin">
+                                        <form name="userlogin" action="{missra:global.cfg_memberurl/}/index_do.php" method="POST">
+                                            <input type="hidden" name="fmdo" value="login" />
+                                            <input type="hidden" name="dopost" value="login" />
+                                            <input type="hidden" name="keeptime" value="604800" />
+                                            <div class="form-row">
+                                                <span>账&nbsp;号:</span>
+                                                <input type="text" name="userid" size="20" class="ipt-txt" />
+                                            </div>
+                                            <div class="form-row">
+                                                <span>密&nbsp;码:</span>
+                                                <input type="password" name="pwd" size="20" class="ipt-txt" />
+                                            </div>
+                                            {missra:php}
+                                                if(preg_match("#2#", $safe_gdopen)){ 
+                                                    echo '
+                                                    <div class="form-row">
+                                                        <span>验证码:</span>
+                                                        <input type="text" name="vdcode" size="8" class="ipt-txt" />
+                                                        <img id="vdimgck" align="absmiddle" onClick="this.src=this.src+\'?\'" alt="看不清？点击更换" src="'.$cfg_cmspath.'/include/vdimgck.php" />
+                                                    </div>'; 
+                                                }
+                                            {/missra:php}
+                                            <div class="submit">
+                                                <button type="submit" class="btn-1">登录</button>
+                                                <a href="{missra:global.cfg_memberurl/}/index_do.php?fmdo=user&dopost=regnew">注册帐号</a>
+                                                <a href="{missra:global.cfg_memberurl/}/resetpassword.php">忘记密码?</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <script>CheckLogin();</script>
+                            </li>
+                            <li>
+                                <ul class="uk-list uk-list-line uk-margin-top">
+                                    {missra:arclist orderby='scores' row='6' titlelen='42'}
+                                    <li>
+                                        <a href="[field:arcurl/]" target="_blank">[field:title/]</a>
+                                        <span><small>点击:</small>[field:click/]</span>
+                                        <span><small>评价:</small>[field:scores/]</span>
+                                    </li>
+                                    {/missra:arclist}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="uk-list uk-list-line uk-margin-top">
+                                    {missra:feedback row='5' titlelen='24' infolen='80'}
+                                    <li>
+                                        <div><a href="#" class="username" target="_blank">[field:username function="(@me=='guest' ? '游客' : @me)"/]</a> 评论 <a href="[field:global.cfg_phpurl/]/feedback.php?aid=[field:aid/]" class="title">[field:title/]</a></div>
+                                        <i>[field:msg/]</i>
+                                    </li>
+                                    {/missra:feedback}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-3 uk-row-first">
+                    <div class="uk-panel uk-panel-box">
+                        <h2 class="uk-panel-title">特别推荐</h2>
+                        <ul>
+                            {missra:arclist flag='a' row='5' orderby='pubdate'}
+                            <li><i class="uk-icon-angle-right">&nbsp;</i><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
+                            {/missra:arclist}
+                        </ul>
+                    </div>
+                </div>
+                <div class="uk-width-medium-1-3">
+                    <div class="uk-panel uk-panel-box">
+                        <h2 class="uk-panel-title">推荐内容</h2>
+                        <ul>
+                            {missra:arclist flag='c' titlelen=42 row='5' tagid='missracms' pagesize='8'}
+                            <li><i class="uk-icon-angle-right">&nbsp;</i><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
+                            {/missra:arclist}
+                        </ul>
+                    </div>
+                </div>
+                <div class="uk-width-medium-1-3">
+                   <div class="uk-panel uk-panel-box">
+                        <h2 class="uk-panel-title">热点内容</h2>
+                        <ul>
+                            {missra:arclist sort='hot' titlelen=42 row='5'}
+                            <li><i class="uk-icon-angle-right">&nbsp;</i><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
+                            {/missra:arclist}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-container uk-container-center inner">
+            <div class="uk-margin">
+                <div class="uk-grid">
+                    {missra:channelartlist}
+                    <div class="uk-width-medium-1-2">
+                        <div class="uk-margin-bottom">
+                            <div class="mi-headline">
+                                <h3 class="uk-h3">{missra:field name='typename'/}</h3>
+                                <small><a class="more" href="{missra:field name='typeurl'/}" target="_blank">more</a></small>
+                            </div>
+                            <ul class="uk-list">
+                                {missra:arclist titlelen='60' row='10'}
+                                <li><i class="uk-icon-angle-right">&nbsp;</i><a href="[field:arcurl /]"{$row.highlight} title="[field:title /]" target="_blank">[field:title /]</a><!-- {$row.date} --></li>
+                                {/missra:arclist}
+                            </ul>
+                        </div>
+                    </div>
+                    {/missra:channelartlist}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    {missra:include filename="footer.htm"/}
+	
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/uikit/js/uikit.min.js"></script>
+    <script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/app.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
+    
+</body>
+
+</html>

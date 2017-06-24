@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+    <title><?php echo $cfg_webname;?>_高级搜索</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $cfg_templets_skin; ?>/uikit/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $cfg_templets_skin; ?>/style/common.css" />
+</head>
+<body class="height-search">
+    <div id="header" class="mi-header">
+        <div class="top-links uk-grid">
+            <div class="uk-width-medium-1-3 uk-container-center mi-text-center">
+                <ul class="mi-subnav uk-subnav uk-subnav-line">
+                    <li><a href="<?php echo $cfg_basehost;?>/<?php echo $cfg_indexurl;?>">Missra首页</a></li>
+                    <li><a href="<?php echo $cfg_basehost;?>/<?php echo $cfg_indexurl;?>/data/sitemap.html" target="_blank">网站地图</a></li>
+                    <li><a href="<?php echo $cfg_basehost;?>/<?php echo $cfg_indexurl;?>/tags.php">TAG标签</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mi-text-center mi-margin">
+            <a href="<?php echo $cfg_basehost;?>/<?php echo $cfg_indexurl;?>">
+                <img src="<?php echo $cfg_templets_skin; ?>/images/logo.png" alt="<?php echo $cfg_webname;?>"/>
+            </a>
+        </div>
+    </div>
+    <hr />
+    <div id="container">
+        <br />
+        <div class="block-title">
+            <h2 class="mi-text-center">
+                高级搜索
+            </h2>
+        </div>
+        <br />
+        <div class="form-box uk-grid">
+            <div class="uk-width-medium-1-2 uk-container-center">
+                <table class="mi-margin-bottom">
+                    <form name="form" action="search.php" method="get">
+                        <tr> 
+                            <td width="20%" align="center">网站栏目：</td>
+                            <td> 
+                              <?php
+                                  $tl = new TypeLink(0);
+                                  $typeOptions = $tl->GetOptionArray(0,0,0);
+                                  echo "<select name='typeid'>\r\n";
+                                  echo "<option value='0' selected>--不限栏目--</option>\r\n";
+                                  echo $typeOptions;
+                                  echo "</select>";
+                                ?>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <td align="center">关 键 字：</td>
+                            <td><input name="q" type="text" id="q"></td>
+                        </tr>
+                        <tr> 
+                            <td align="center">发布时间：</td>
+                            <td><select name="starttime" id="starttime" >
+                                <option value="-1" selected>--不限--</option>
+                                <option value="7">一周以内</option>
+                                <option value="30">一个月内</option>
+                                <option value="90">三个月内</option>
+                                <option value="180">半年以内</option>
+                              </select>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <td align="center">内容类型：</td>
+                            <td>
+                                <select name="channeltype" id="channeltype">
+                                    <option value="0" selected>--不限--</option>
+                                    <?php
+                                         $dsql->SetQuery("Select id,typename From #@__channeltype order by id desc");
+                                         $dsql->Execute();
+                                         while($row = $dsql->GetObject()) {
+                                           echo "<option value='".$row->id."'>".$row->typename."</option>\r\n";
+                                         }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <td align="center">排序方式：</td>
+                            <td> 
+                                <select name="orderby" id="orderby" >
+                                <option value="sortrank" selected>--默认--</option>
+                                <option value="senddate">收录时间</option>
+                                <option value="pubdate">发布时间</option>
+                                <option value="id">文档ID</option>
+                                </select> 
+                            </td>
+                        </tr>
+                        <tr> 
+                            <td align="center">显示条数：</td>
+                            <td>
+                                <input name="pagesize" type="text" id="pagesize" value="10" size="4" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">关键字模式：</td>
+                            <td>
+                                <input name="kwtype" type="radio" value="1" checked />或 
+                                <input type="radio" name="kwtype" value="0" />与
+                            </td>
+                        </tr>
+                        <tr> 
+                            <td align="center">搜索内容：</td>
+                            <td>
+                                <select name="searchtype" id="searchtype">
+                                    <option value="titlekeyword" selected>默认搜索</option>
+                                    <option value="title">仅搜索标题</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <td align="center">&nbsp;</td>
+                            <td>
+                                <input name="搜索" type="submit" value="搜索" border="0" />
+                                <input name="重置" type="reset" value="重置" border="0" id="充值" />
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="footer-body uk-container uk-container-center">
+            <span class="gotop">
+                <a href="javascript:scroll(0,0)">返回顶部</a>
+            </span>
+            <div class="copyright">   
+                Powered by <a href="http://www.missra.com" title="玫莎内容管理系统(Missra)--最专业的PHP网站管理系统。" target="_blank"><strong>Missra<?php echo $cfg_version; ?></strong></a> &nbsp;&nbsp; 
+                &copy; 2010-2020 <a href="http://www.missra.com/" target="_blank">Missra</a> Inc.&nbsp;&nbsp;
+                <?php echo $cfg_powerby; ?>&nbsp;&nbsp;<?php echo $cfg_beian; ?>
+            </div>       
+        </div>
+    </div>
+
+</body>
+</html>

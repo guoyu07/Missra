@@ -1,0 +1,279 @@
+<div class="mi-comments">
+    <!-- //主模板必须要引入{missra:global.cfg_templets_skin/}/js/ajax.js-->
+
+    <!-- comments list start -->
+    <div class="comments-list">
+        <h2 class="mi-title">
+            最新评论
+            <small class="more">
+                <a href="{missra:field name='phpurl'/}/feedback.php?aid={missra:field.id/}">进入详细评论页&gt;&gt;</a>
+            </small>
+        </h2>
+        <dd id='commetcontentNew'></dd>
+        <dd id='commetcontent'></dd>
+    </div>
+
+    <!-- comments form start -->
+    <div class="comments-form mi-margin-bottom">
+        <h2 class="mi-title">添加评论</h2>
+        <p>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</p>
+        <div class="comment-post">
+            <form class="mi-form" action="#" method="post" name="feedback" onsubmit="return false;">
+                <input class="mi-input" type="hidden" name="dopost" value="send" />
+                <input class="mi-input" type="hidden" name="comtype" value="comments" />
+                <input class="mi-input" type="hidden" name="aid" value="{missra:field name='id'/}" />
+                <input class="mi-input" type="hidden" name="fid" id='feedbackfid' value="0" />
+
+                <div class="mi-stand mi-margin-bottom">
+                    <strong>评价:</strong>
+                    <input class="mi-input-radio" type="radio" name="feedbacktype" value="good" checked="1" id="stand-good" />
+                    <label for="stand-good">好评</label>
+                    <input class="mi-input-radio" type="radio" name="feedbacktype" value="feedback" id="stand-neu" />
+                    <label for="stand-neu">中立</label>
+                    <input class="mi-input-radio" type="radio" name="feedbacktype" value="bad" id="stand-bad" />
+                    <label for="stand-bad">差评</label>
+                </div>
+
+                <div class="mi-editor mi-margin-bottom">
+                    <script type="text/javascript">
+                        window.CKEDITOR_BASEPATH = '{missra:global.cfg_cmsurl/}/include/ckeditor/';
+                    </script>
+                    <script type="text/javascript" src="{missra:global.cfg_cmsurl/}/include/ckeditor/ckeditor.js?t=B8DJ5M3"></script>
+                    <textarea name="msg" rows="8" cols="60"></textarea>
+                    <script type="text/javascript">
+                        CKEDITOR.replace('msg', {
+                            "extraPlugins": "mipage,multipic,addon,bbcode",
+                            "fontSize_sizes": "30\/30%;50\/50%;100\/100%;120\/120%;150\/150%;200\/200%;300\/300%",
+                            "disableObjectResizing": "true",
+                            "toolbar": [
+                                ["Source", "-", "Bold", "Italic", "Underline", "-"],
+                                ["FontSize", "TextColor"],
+                                ["Link", "Unlink", "Smiley"]
+                            ],
+                            "toolbar": [
+                                ["Source", "-", "Bold", "Italic", "Underline", "-"],
+                                ["FontSize", "TextColor"],
+                                ["Link", "Unlink"]
+                            ],
+                            "height": 100,
+                            "skin": "kama"
+                        });
+
+                    </script>
+                </div>
+
+                <div class="mi-submitpost mi-margin-bottom">
+                    <div id="_ajax_feedback">
+                        {missra:php} 
+                            if(preg_match("/4/",$safe_gdopen)){
+                            echo '
+                            <div class="mi-float-left">
+                                <label>验证码:</label>
+                                <input class="mi-input" type="text" name="validate" placeholder="">
+                            </div>
+                            <div class="mi-float-left">
+                                <img src="'.$cfg_cmspath.'/include/vdimgck.php" id="validateimg" class="mi-cursor-pointer mi-margin-left mi-vertical-align-middle" onclick="this.src=this.src+\'?\'" title="点击我更换图片" alt="点击我更换图片" />
+                            </div>';
+                            } 
+                        {/missra:php}
+                        
+                        <div class="mi-float-left mi-vertical-align-middle">
+                            <input class="mi-checkbox mi-margin-left" type="checkbox" name="notuser" id="submit-guest" />
+                            <label for="submit-guest" />匿名</label>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                
+                    {missra:php}
+                        if($cfg_mb_open=='Y') {
+                            echo '<script type="text/javascript">CheckLogin();</script>';
+                        }
+                    {/missra:php}
+                    <div class="mi-submit">
+                        <input type="submit" value="发表评论" class="mi-input-button mi-margin-left" onClick='PostComment()' />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function LoadCommets(page) {
+            var taget_obj = document.getElementById('commetcontent');
+            var waithtml = "<div class='mi-line-height-50'><img src='{missra:global.cfg_cmsurl/}/images/loadinglit.gif' />评论加载中...</div>";
+            var myajax = new MiAjax(taget_obj, true, true, '', 'x', waithtml);
+            myajax.SendGet2("{missra:global.cfg_phpurl /}/feedback_ajax.php?dopost=getlist&aid={missra:field.id/}&page=" + page);
+            MiXHTTP = null;
+        }
+
+        function PostComment() {
+            var f = document.feedback;
+            var msg = CKEDITOR.instances.msg.getData();
+            var nface = '6';
+            var nfeedbacktype = 'feedback';
+            var nvalidate = '';
+            var nnotuser = '';
+            var nusername = '';
+            var npwd = '';
+            var taget_obj = $MI('commetcontentNew');
+            var waithtml = "<div style='line-height:30px'><img src='{missra:global.cfg_cmsurl/}/images/loadinglit.gif' />正在发送中...</div>";
+
+            if (msg == '') {
+                alert("评论内容不能为空！");
+                return;
+            }
+
+            if (f.validate) {
+                if (f.validate.value == '') {
+                    alert("请填写验证码！");
+                    return;
+                } else {
+                    nvalidate = f.validate.value;
+                }
+            }
+
+            if (msg.length > 500) {
+                alert("你的评论是不是太长了？请填写500字以内的评论。");
+                return;
+            }
+
+            if (f.feedbacktype) {
+                for (var i = 0; i < f.feedbacktype.length; i++)
+                    if (f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+            }
+
+            /*
+            if(f.face) {
+                for(var j=0; j < f.face.length; j++)
+                    if(f.face[j].checked) nface = f.face[j].value;
+            }
+            */
+
+            if (f.notuser.checked) {
+                nnotuser = '1';
+            }
+
+            if (f.username) {
+                nusername = f.username.value;
+            }
+
+            if (f.pwd) {
+                npwd = f.pwd.value;
+            }
+
+            var myajax = new MiAjax(taget_obj, false, true, '', '', waithtml);
+            myajax.sendlang = '{missra:global.cfg_soft_lang/}';
+            myajax.AddKeyN('dopost', 'send');
+            myajax.AddKeyN('aid', '{missra:field.id/}');
+            myajax.AddKeyN('fid', f.fid.value);
+            myajax.AddKeyN('face', nface);
+            myajax.AddKeyN('feedbacktype', nfeedbacktype);
+            myajax.AddKeyN('validate', nvalidate);
+            myajax.AddKeyN('notuser', nnotuser);
+            myajax.AddKeyN('username', nusername);
+            myajax.AddKeyN('pwd', npwd);
+            myajax.AddKeyN('msg', msg);
+            myajax.SendPost2('{missra:global.cfg_phpurl/}/feedback_ajax.php');
+            //msg = '';
+            CKEDITOR.instances.msg.setData('');
+            //taget_obj.removeAttribute('id');
+            f.fid.value = 0;
+            if (f.validate) {
+                if ($MI('validateimg')) {
+                    $MI('validateimg').src = "{missra:global.cfg_cmsurl/}/include/vdimgck.php?" + f.validate.value;
+                }
+                f.validate.value = '';
+            }
+        }
+
+        function quoteCommet(fid) {
+            document.feedback.fid.value = fid;
+        }
+
+        function ajaxFeedback(aid, fid, type) {
+            var taget_obj = $MI('ajaxfeedback_' + fid);
+            if (taget_obj.innerHTML == '') {
+                var myajax = new MiAjax(taget_obj, true, true, '', 'x');
+                myajax.SendGet2("{missra:global.cfg_phpurl /}/feedback.php?aid=" + aid + "&fid=" + fid + "&action=quote&type=ajax");
+                eval('var result = typeof CKEDITOR.instances.msg_' + fid);
+
+                if (result != 'undefined') {
+                    // 删除实例
+                    eval('var edit = CKEDITOR.instances.msg_' + fid);
+                    CKEDITOR.remove(edit);
+                }
+                CKEDITOR.replace(document.getElementById('msg_' + fid), CKEDITOR.instances.msg.config);
+                scroll(0, taget_obj.offsetTop - 120);
+                var formname = 'f = document.ajaxfeedback_' + fid;
+                eval(formname);
+                if (f.validate) {
+                    if ($MI('vdimg_' + fid)) $MI('vdimg_' + fid).src = "{missra:global.cfg_cmsurl/}/include/vdimgck.php?" + f.validate.value;
+                    f.validate.value = '';
+                }
+
+                MiXHTTP = null;
+            }
+        }
+
+        function ajaxQuotePost(fid) {
+            var formname = 'f = document.ajaxfeedback_' + fid;
+            eval(formname);
+            //var f = document.formname;
+            //var f = f[0];
+            var nvalidate = '';
+            var nnotuser = '';
+            var nusername = '';
+            var npwd = '';
+            var taget_obj = $MI('commetcontentNew');
+            var waithtml = "<div style='line-height:30px'><img src='{missra:global.cfg_cmsurl/}/images/loadinglit.gif' />正在发送中...</div>";
+            eval('var msg = CKEDITOR.instances.msg_' + fid + '.getData()');
+
+            if (f.validate) {
+                if (f.validate.value == '') {
+                    alert("请填写验证码！");
+                    return;
+                } else {
+                    nvalidate = f.validate.value;
+                }
+            }
+            var myajax = new MiAjax(taget_obj, false, true, '', '', waithtml);
+
+            if (f.notuser.checked) {
+                nnotuser = '1';
+            }
+
+            if (f.username) {
+                nusername = f.username.value;
+            }
+
+            if (f.pwd) {
+                npwd = f.pwd.value;
+            }
+
+            myajax.sendlang = '{missra:global.cfg_soft_lang/}';
+            myajax.AddKeyN('dopost', 'send');
+            myajax.AddKeyN('aid', '{missra:field.id/}');
+            myajax.AddKeyN('fid', f.fid.value);
+            myajax.AddKeyN('type', 'ajax');
+            myajax.AddKeyN('comtype', f.comtype.value);
+            myajax.AddKeyN('isconfirm', 'yes');
+
+            myajax.AddKeyN('typeid', f.typeid.value);
+            myajax.AddKeyN('quotemsg', f.quotemsg.value);
+            myajax.AddKeyN('validate', nvalidate);
+            myajax.AddKeyN('notuser', nnotuser);
+            myajax.AddKeyN('username', nusername);
+            myajax.AddKeyN('pwd', npwd);
+            myajax.AddKeyN('msg', msg);
+            myajax.SendPost2('{missra:global.cfg_phpurl/}/feedback_ajax.php');
+            //alert(f.quotemsg.value);
+            if ($MI('ajaxfeedback_' + fid).innerHTML != null) {
+                $MI('ajaxfeedback_' + fid).innerHTML = '';
+            }
+            scroll(0, taget_obj.offsetTop);
+        }
+
+        LoadCommets(1);
+
+    </script>
+</div>

@@ -1,0 +1,8 @@
+子栏目调用标签
+>>missra>>
+{missra:sonchannel}
+<a href='[field:typeurl/]'>[field:typename/]</a>
+{/missra:sonchannel}
+>>missra>>
+row ='100' 返回数目
+col = '1'  默认单列显示

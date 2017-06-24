@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="{missra:global.cfg_soft_lang /}" ?>
+<rss version="2.0">
+<channel>
+<title>{missra:field name='typename'/}</title>
+<link>{missra:field name='typelink'/}</link>
+<description>{missra:field name='title' function='html2text(@me)'/}</description>
+<language>zh-cn</language>
+<generator><![CDATA[{missra:field name='powerby'/}]]></generator>
+<webmaster>{missra:field name='adminemail'/}</webmaster>
+{missra:rssitem}
+<item>
+    <title><![CDATA[[field:title/]]]></title>
+    <link>[field:fullurl/]</link>
+    <description><![CDATA[[field:description function='html2text(@me)'/]]]></description>
+    <pubDate>[field:stime/]</pubDate>
+    <category>[field:typename/]</category>
+    <author>[field:writer/]</author>
+    <comments>[field:source/]</comments>
+</item>
+{/missra:rssitem}
+</channel>
+</rss>

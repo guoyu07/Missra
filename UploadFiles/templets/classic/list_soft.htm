@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+<title>{missra:field.title/}_{missra:global.cfg_webname/}</title>
+<meta name="keywords" content="{missra:field name='keywords'/}" />
+<meta name="description" content="{missra:field name='description' function='html2text(@me)'/}" />
+<link href="{missra:global.cfg_templets_skin/}/style/base.css" rel="stylesheet" media="screen" type="text/css" />
+<meta http-equiv="mobile-agent" content="format=xhtml;url={missra:global.cfg_mobileurl/}/list.php?tid={missra:field.id/}">
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="{missra:global.cfg_mobileurl/}/list.php?tid={missra:field.id/}";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+</head>
+<body class="downlist">
+{missra:include filename="head.htm"/} 
+<div id="container">
+	<div class="mi-1000 center clear mt1">
+		<div class="mod-left">
+			<div class="place"> <strong>当前位置:</strong> {missra:field name='position'/} </div>
+			<!-- /place -->
+			<div class="listbox">
+				<ul class="e2">
+					{missra:list pagesize='10'}
+					<li> [field:array runphp='yes']@me = (empty(@me['litpic']) ? "" : "<a href='{@me['arcurl']}' class='preview'><img src='{@me['litpic']}'/></a>"); [/field:array]<!--//--> 
+						<a href="[field:arcurl/]" class="title">[field:title/]</a> <span class="info"> <small>上传日期：</small>[field:pubdate function="GetDateTimeMK(@me)"/] <small>推荐级别：</small>[field:softrank function='GetRankStar(@me)'/] <small>软件语言：</small>[field:language/] <small>浏览次数：</small>[field:click/] </span>
+						<p class="intro"> [field:description/]... </p>
+					</li>
+					{/missra:list}
+				</ul>
+			</div>
+			<!-- /listbox -->
+			<div class="pagesNav">
+				<ul class="pagelist">
+					{missra:pagelist listitem="info,index,end,pre,next,pageno" listsize="5"/}
+				</ul>
+			</div>
+			<!-- /pages --> 
+		</div>
+		<!-- /mod-left -->
+		
+		<div class="mod-right">
+			<div>
+				<dl class="tbox">
+					<dt><strong>栏目列表</strong></dt>
+					<dd>
+						<ul class="d6">
+							{missra:channel type='son' currentstyle="
+							<li><a href='~typelink~' class='thisclass'>~typename~</a></li>
+							"}
+							<li><a href='[field:typeurl/]'>[field:typename/]</a></li>
+							{/missra:channel}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div id="listRtPicAD" style="margin:10px auto">{missra:myad name='listRtPicAD'/}</div>
+			<div class="downrange">
+				<dl class="tbox">
+					<dt><strong>推荐软件</strong></dt>
+					<dd>
+						<ul class="f1">
+							{missra:arclist flag='c' titlelen=42 row=8}
+							<li> <a href="[field:arcurl/]">[field:title/]</a> <span><small>好评:</small>[field:scores/]</span> <span><small>人气:</small>[field:click/]</span> </li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<!-- /downrange -->
+			<div class="hot mt1">
+				<dl class="tbox">
+					<dt><strong>热门软件</strong></dt>
+					<dd>
+						<ul class="c1 ico2">
+							{missra:arclist row=10 orderby=click}
+							<li><a href="[field:arcurl/]">[field:title/]</a></li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div id="listRtPicAD2" style="margin:10px auto">{missra:myad name='listRtPicAD2'/}</div>
+		</div>
+		<!-- /mod-right --> 
+	</div>
+</div>
+<div id="footAD" style="margin:10px auto; width:726px">{missra:myad name='innerfooterAD'/}</div>
+{missra:include filename="footer.htm"/} 
+</body>
+</html>

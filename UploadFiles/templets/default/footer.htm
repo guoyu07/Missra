@@ -1,0 +1,99 @@
+<div id="footer">
+    <div class="footer">
+        <div class="uk-container uk-container-center inner">
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                        <div class="mi-headline">
+                            <h3 class="uk-panel-title">关于</h3>
+                        </div>
+                        <div class="uk-panel-content">
+                            {missra:global.cfg_description/}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                        <div class="mi-headline">
+                            <h3 class="uk-panel-title">关键字</h3>
+                        </div>
+                        <div class="uk-panel-content">
+                            {missra:global.cfg_keywords/}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                        <div class="mi-headline">
+                            <h3 class="uk-panel-title">链接</h3>
+                        </div>
+                        <div class="friend-link">
+                            <ul class="uk-list uk-list-line">
+                            {missra:flink row='5' type='textall' titlelen="24" typeid="0" linktype='2'}
+                                <li><i class="uk-icon-angle-right">&nbsp;</i>[field:link /]</li>
+                            {/missra:flink}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                        <div class="mi-headline">
+                            <h3 class="uk-panel-title">最新</h3>
+                        </div>
+                        <ul class="Latest uk-list uk-list-line">
+                        {missra:arclist typeid='0' row='5'}
+                            <li><i class="uk-icon-angle-right">&nbsp;</i><a href='[field:arcurl/]'>[field:title/]</a></li>
+                        {/missra:arclist}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-1">
+                    <ul class="mi-subnav uk-subnav uk-subnav-line">
+                        {missra:flinktype type="missra"}
+                            {missra:flink/}
+                        {/missra:flinktype}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sub-footer">
+        <div class="uk-container uk-container-center inner">
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-2">
+                    <div class="copyright">{missra:global.cfg_powerby/} {missra:global.cfg_beian/}</div>
+                </div>
+                <div class="uk-width-medium-1-2">
+                    <ul class="mi-subnav uk-subnav uk-subnav-line">
+                        <li><a href="{missra:global.cfg_cmsurl/}">Missra首页</a></li>
+                        <li><a href="{missra:global.cfg_cmsurl/}/plus/heightsearch.php" target="_blank">高级搜索</a></li>
+                        <li><a href="{missra:global.cfg_cmsurl/}/data/sitemap.html" target="_blank">网站地图</a></li>
+                        <li><a href="{missra:global.cfg_cmsurl/}/tags.php">TAG标签</a></li>
+                        <li><a href="{missra:global.cfg_dataurl/}/rssmap.html" class="rss">RSS订阅</a></li>
+                        <li><a href="" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('{missra:global.cfg_basehost/}');">设为首页</a></li>
+                        <li><a href="javascript:window.external.AddFavorite('{missra:global.cfg_basehost/}','{missra:global.cfg_webname/}')">加入收藏</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="offcanvas" class="uk-offcanvas">
+	<div class="uk-offcanvas-bar">
+		<ul class="uk-nav uk-nav-offcanvas" data-uk-nav="{ multiple: true }">
+			<li><a href='{missra:global.cfg_cmsurl/}/'>首页</a></li>
+			{missra:channel type='top' row='10' currentstyle="<li class='uk-active'><a href='~typelink~' ~rel~>~typename~</a></li>"}
+			<li><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>
+			{/missra:channel}
+		</ul>
+	</div>
+</div>
+
+<div class="hidden stats">
+	{missra:global.cfg_web_stats/}
+</div>

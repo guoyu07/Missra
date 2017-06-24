@@ -1,0 +1,110 @@
+/*
+|---------------------------------------------------------------
+|	Login Style
+|---------------------------------------------------------------
+*/
+
+body {
+	background-color: #F0F0F0;
+}
+
+#login-box {
+	width: 360px;
+	height: 350px;
+	margin: 150px auto 0;
+	background: url(../images/login-bg.png) top center no-repeat;
+	overflow: hidden;
+}
+
+.login-top {
+	height: auto;
+	line-height: 50px;
+	margin-top: 90px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.login-top h1 {
+	font-size: 20px;
+	color: #666;
+}
+
+.login-main {
+	height: 160px;
+	overflow: hidden;
+}
+
+.login-main dl {
+	width: 300px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.login-main dl dt,
+.login-main dl dd {
+	float: left;
+	height: 26px;
+	line-height: 26px;
+	display: inline-block;
+	margin: 5px 0;
+}
+
+.login-main dl dt {
+	width: 90px;
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	padding-right: 5px;
+}
+
+.login-main dl dd {}
+
+.login-main dl dd input#vdcode {
+	width: 50px;
+	margin-right: 5px;
+}
+
+.login-main .login-btn-dd {
+	height: 30px;
+}
+
+.login-main .login-btn {
+	background: url(../images/login-btn.png) top center no-repeat;
+	width: 136px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+.login-bottom {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.login-bottom a {
+	color: #666;
+}
+
+.login-bottom a:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+.safe-tips {
+	width: 80%;
+	line-height: 30px;
+	margin: 0 auto;
+	padding-left: 20px;
+	border: 1px solid #F2DD8C;
+	background: url(../images/safe-tips.gif) 10px #FFFFCC no-repeat;
+	color: #666;
+	zoom: 1;
+	overflow: hidden;
+}

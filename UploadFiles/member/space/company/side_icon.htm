@@ -1,0 +1,38 @@
+<!-- //begin icon -->
+<div class="box" id="side_icon">
+	  <h2>公司资料</h2>
+	  <div class="profile">
+		<div class="text">
+		  <div class="profile-pic">
+		  	<span id="msg"></span>
+			<div>
+			{missra:if $_vars['face']=='' }
+	<img src="images/nopic.gif" alt="nopic" />
+	{else}
+	<img src="{missra:var.face/}" alt="{missra:var.uname/}" />
+	{/missra:if}
+			</div>
+		  </div>
+          <div style="height:30px;text-align:center">{missra:var.msg /}</div>
+		  <dl class="profile">
+			<dd class="tac" style="word-break:keep-all">
+			  <img src="space/company/images/talk.gif" align="absmiddle" /><a href="index.php?action=guestbook&uid={missra:var.userid/}">留言</a>
+			  <img src="space/company/images/message.gif" align="absmiddle" /><a href="pm.php?dopost=send&uid={missra:var.userid/}">短消息</a>
+				<img src="space/company/images/team.gif" align="absmiddle" /><a href="index.php?action=newfriend&uid={missra:var.userid/}">加好友</a>
+			</dd>
+			<dd>&nbsp;最后登录：{missra:var.logintime function="MyDate('y-m-d h:i',@me)" /}</dd>
+			<dd>&nbsp;会员等级：{missra:var.membername/}</dd>
+			<dd>&nbsp;空间访问：{missra:var.homecount/} 次</dd>
+			<dd>&nbsp;联系人：{missra:var.linkman/}</dd>
+			<dd>&nbsp;电话：{missra:var.tel/}</dd>
+			<dd>&nbsp;传真：{missra:var.fax/}</dd>
+			<dd>&nbsp;网址: {missra:var.url/}</dd>
+			<dd>&nbsp;Email: {missra:var.email/}</dd>
+			<dd>&nbsp;地址：{missra:var.address/}</dd>
+		  </dl>
+		</div>
+	  </div>
+</div>
+<!-- //end icon -->
+
+

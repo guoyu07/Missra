@@ -1,0 +1,94 @@
+默认模板
+
+目录和文件存放位置以及它作用。
+
+|-- templets 默认模板目录
+|-- templets -- default 默认模板风格目录
+|-- templets -- default -- images 默认模板所用到相关图片存放目录
+|-- templets -- default -- js 默认模板所用到相关JS存放目录
+|-- templets -- default -- style 默认模板所用到的相关CSS样式文件存放目录；
+|-- templets -- default -- advancedsearch.htm 自定义模型高级搜索模板
+|-- templets -- default -- ajaxfeedback.htm 前台Ajax无刷新评论模板
+|-- templets -- default -- article_article.htm 自带文章模型内容页模板
+|-- templets -- default -- article_article_frame.htm 自带文章模型内容页模板（支持二级域名的备用模板）
+|-- templets -- default -- article_default.htm 系统模型内容页不存在时的默认模板
+|-- templets -- default -- article_default_sg.htm 独立模型内容页不存在时的默认模板
+|-- templets -- default -- article_image.htm 自带图集模型内容页模板
+|-- templets -- default -- article_image_frame.htm 自带图集模型内容页可选模板
+|-- templets -- default -- article_infos.htm 自带分类信息模型内容页模板
+|-- templets -- default -- article_shop.htm 自带商品模型内容页模板
+|-- templets -- default -- article_soft.htm 自带软件模型内容页模板
+|-- templets -- default -- article_soft_frame.htm 自带软件模型内容页可选模板
+|-- templets -- default -- article_spec.htm 专题模型内容页可选模板
+|-- templets -- default -- article_spec_test.htm 无用模板，忽略
+|-- templets -- default -- footer.htm 前台通用底部模板
+|-- templets -- default -- googlemap.htm 前台Goolge地图模板
+|-- templets -- default -- head.htm 前台通用头部模板
+|-- templets -- default -- index.htm 前台网站首页模板
+|-- templets -- default -- index_article.htm 自带文章模型频道封面页模板
+|-- templets -- default -- index_default.htm 系统模型封面页模板不存在时默认模板
+|-- templets -- default -- index_default_sg.htm 独立表单模型封面页模板不存在时默认模板
+|-- templets -- default -- index_image.htm 自带图集模型封面页模板
+|-- templets -- default -- index_infos.htm 自带分类信息模型封面页模板
+|-- templets -- default -- index_shop.htm 自带商品模型封面页模板
+|-- templets -- default -- index_soft.htm 自带软件模型封面页模板
+|-- templets -- default -- list_article.htm 自带文章模型栏目列表页模板
+|-- templets -- default -- list_default.htm 系统模型列表页模板不存在时默认模板
+|-- templets -- default -- list_default_sg.htm 独立表单模型列表页模板不存在时默认模板
+|-- templets -- default -- list_free.htm 自由列表模板
+|-- templets -- default -- list_image.htm 自带图集模型列表页模板
+|-- templets -- default -- list_infos.htm 自带分类信息模型列表页模板
+|-- templets -- default -- list_shop.htm 自带商品模型列表页模板
+|-- templets -- default -- list_soft.htm 自带软件模型列表页模板
+|-- templets -- default -- list_spec.htm 自带专题模型列表页模板
+|-- templets -- default -- search.htm 搜索结果页模板
+|-- templets -- default -- singlepage.htm 单页文档模板
+|-- templets -- default -- tag.htm 默认TAG标签首页模板
+|-- templets -- default -- taglist.htm 默认TAG标签列表模板
+
+|-- templets -- lurd 默认Lurd相关模板风格目录（在前台不起作用，可忽略）
+
+|-- templets -- plus 默认plus杂项功能相关模板风格目录
+|-- templets -- plus -- feedback_quote_ajax.htm 前台Ajax评论引用模板
+|-- templets -- plus -- feedback_templet.htm 评论页模板
+|-- templets -- plus -- feedback_quote.htm 评论页引用模板
+|-- templets -- plus -- bookfeedback_confirm.htm 小说评论页确认模板
+|-- templets -- plus -- bookfeedback_quote.htm 小说评论引用模板
+|-- templets -- plus -- bookfeedback_templet.htm 小说评论页模板
+|-- templets -- plus -- bookfeedback_templet_js.htm 小说评论JS调用模板
+|-- templets -- plus -- car.htm 购物车模板
+|-- templets -- plus -- carbuyaction.htm 提交购买模板
+|-- templets -- plus -- comments_frame.htm 评论二级域名模板
+|-- templets -- plus -- digg_frame.htm 文档Digg二级域名模板
+|-- templets -- plus -- download_links_templet.htm 下载地址页模板
+|-- templets -- plus -- erraddsave.htm 错误提交页模板
+|-- templets -- plus -- feedback_confirm.htm 评论确认页模板
+|-- templets -- plus -- feedback_templet_js.htm 评论JS调用模板
+|-- templets -- plus -- flink-add.htm 友情链接申请模板
+|-- templets -- plus -- flink-list.htm 友情链接页模板
+|-- templets -- plus -- guestbook.htm 留言薄插件模板
+|-- templets -- plus -- guestbook-admin.htm 留言薄管理员模板
+|-- templets -- plus -- guestbook-user.htm 留言薄用户模板
+|-- templets -- plus -- heightsearch.htm 高级搜索页模板
+|-- templets -- plus -- js.htm JS文件生成模板
+|-- templets -- plus -- list_diyform.htm 自定义表单列表模板
+|-- templets -- plus -- plus_foot.htm 杂项插件底部模板
+|-- templets -- plus -- post_diyform.htm 自定义表单提交模板
+|-- templets -- plus -- recommend.htm 文档推荐模板
+|-- templets -- plus -- rss.htm 前台RSS文件模板
+|-- templets -- plus -- rssmap.htm 前台RSS地图模板
+|-- templets -- plus -- shops_action_payment.htm 商城订单购买页模板
+|-- templets -- plus -- showphoto.htm 图集浏览模板
+|-- templets -- plus -- sitemap.htm 网站地图模板
+|-- templets -- plus -- view_diyform.htm 自定义表单浏览模板
+|-- templets -- plus -- view_msg.htm 通用提示窗口模板
+|-- templets -- plus -- view_msg_catalog.htm 栏目窗口提示模板
+|-- templets -- plus -- vote.htm 投票结果显示模板
+|-- templets -- plus -- win_templet.htm 通用提示模板
+
+|-- templets -- system 默认各类系统底层模板模板风格目录（一般情况下无需变动）
+|-- templets -- templet-dirlist.inc 默认模板文件夹配置文字说明
+|-- templets -- templet-filelist.inc 默认模板文件名称配置说明
+|-- templets -- templet-pluslist.inc 默认plus杂项功能文件名称配置说明
+
+以上所列出来的仅供参考。

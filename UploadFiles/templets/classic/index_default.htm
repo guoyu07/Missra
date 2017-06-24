@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={missra:global.cfg_soft_lang/}" />
+<title>{missra:field.title/}_{missra:global.cfg_webname/}</title>
+<meta name="keywords" content="{missra:field name='keywords'/}" />
+<meta name="description" content="{missra:field name='description' function='html2text(@me)'/}" />
+<link href="{missra:global.cfg_templets_skin/}/style/base.css" rel="stylesheet" media="screen" type="text/css" />
+<meta http-equiv="mobile-agent" content="format=xhtml;url={missra:global.cfg_mobileurl/}/list.php?tid={missra:field.id/}">
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="{missra:global.cfg_mobileurl/}/list.php?tid={missra:field.id/}";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+<script type="text/javascript" src="{missra:global.cfg_templets_skin/}/js/slider.js" ></script>
+</head>
+<body class="channel">
+{missra:include filename="head.htm"/} 
+<!-- /header -->
+<div id="container">
+	<div class="channel-nav mi-1000 center clear">
+		<div class='sonnav'> {missra:channel type='son' currentstyle="<span><a href='~typelink~' class='thisclass'>~typename~</a></span>"} <span><a href='[field:typeurl/]'>[field:typename/]</a></span>{/missra:channel} </div>
+	</div>
+	<!-- /channel-nav -->
+	<div class="mod-wrap mi-1000 center">
+		<div class="mod-left">
+			<div class="slidenews">
+				<div id="slider_x" class="slidebox1">
+					<ul class="case_list">
+						{missra:arclist flag='f' row='5'}
+						<li class="case_[field:global.autoindex/]">
+							<a class="thumb" href="[field:arcurl/]"><img src="[field:litpic/]"></a>
+							<p class="title"><a href="[field:arcurl/]" target="_blank">[field:title function='html2text(@me)'/]</a></p>
+						</li>
+						{/missra:arclist}
+					</ul>
+				</div>
+				<script type="text/javascript">
+					// 调用语句
+					Effect.slider({
+						'targetElement': 'slider_x',//slider_x 元素ID
+						'showMarkers': true,
+						'showControls': true
+					});
+				</script>
+			</div>
+			<!-- /slidenews -->
+			<div class="topcommand">
+				<dl class="tbox">
+					<dt><strong>频道头条</strong></dt>
+					<dd>
+						<div class="onenews"> {missra:arclist flag='h' limit='0,1'}
+							<h2><a href="[field:arcurl/]">[field:title/]</a></h2>
+							<p>[field:description function='cn_substr(@me,110)'/]...<a href="[field:arcurl/]">[查看全文]</a></p>
+							{/missra:arclist} </div>
+						<!-- /onenews -->
+						<ul class="c2 ico1">
+							{missra:arclist flag='h' limit='1,6'}
+							<li><a href="[field:arcurl/]">[field:title/]</a></li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<!-- /topcommand -->
+			
+			<div class="picnews mt1">
+				<dl class="tbox">
+					<dt><strong>图文资讯</strong></dt>
+					<dd>
+						<ul class="e1">
+							{missra:arclist row=5 orderby=pubdate type='image.' imgwidth='124' imgheight='94'}
+							<li><a href="[field:arcurl/]">[field:image/]<span class="title">[field:title/]</span></a></li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<!-- /picnews -->
+			
+			<div class="listbox"> 
+			{missra:channelartlist}
+				<dl class="tbox">
+					<dt><strong><a href="{missra:field name='typeurl'/}">{missra:field name='typename'/}</a></strong><span class="more"><a href="{missra:field name='typeurl'/}">更多...</a></span></dt>
+					<dd>
+						<ul class="d1 ico3">
+							{missra:arclist titlelen='60' row='8'}
+							<li><span class="date">[field:pubdate function="MyDate('m-d',@me)"/]</span><a href="[field:arcurl /]">[field:title /]</a></li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+				{/missra:channelartlist} 
+			</div>
+			<!-- /listbox --> 
+		</div>
+		<!-- /mod-left -->
+		
+		<div class="mod-right">
+			<div class="commend">
+				<dl class="tbox">
+					<dt><strong>推荐内容</strong></dt>
+					<dd>
+						<ul class="d4">
+							{missra:arclist flag='c' titlelen=42 row=6}
+							<li><a href="[field:arcurl/]">[field:title/]</a>
+								<p>[field:description function='cn_substr(@me,80)'/]...</p>
+							</li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<!-- /commend -->
+			<div id="conrightAD" style="margin:10px auto">{missra:myad name='listRtPicAD'/}</div>
+			<div class="hot mt1">
+				<dl class="tbox">
+					<dt><strong>热点内容</strong></dt>
+					<dd>
+						<ul class="c1 ico2">
+							{missra:arclist row=10 orderby=click}
+							<li><a href="[field:arcurl/]">[field:title/]</a></li>
+							{/missra:arclist}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			{missra:qrcode/}
+		</div>
+		<!-- /mod-right --> 
+	</div>
+</div>
+<div id="footAD" style="margin:10px auto; width:726px">{missra:myad name='innerfooterAD'/}</div>
+{missra:include filename="footer.htm"/} 
+<!-- /footer -->
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+	<title>Missra menu</title>
+	<link rel="stylesheet" href="css/base.css" type="text/css" />
+	<script type="text/javascript" src="../include/js/miajax.js"></script>
+	<script src="../include/js/jquery/jquery.js" type="text/javascript"></script>
+	<?php echo "<script type='text/javascript'>var curopenItem = '$openitem';</script>\r\n"; ?>
+	<script type="text/javascript" src="js/leftmenu.js"></script>
+	<style>
+		body {
+			font: 13px/2 "Microsoft YaHei", "simsun", "Microsoft YaHei UI Light", Arial, Helvetica, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #555;
+			overflow:scroll;
+			/*overflow-x:hidden;*/
+		}
+		dl.bitem {
+			clear:both;
+			margin:0px 5px 5px 12px;
+			background:url(images/menunewbg.gif) left top no-repeat;
+		}
+		dl.bitem2 {
+			clear:both;
+			margin:0px 0px 5px 12px;
+			background:url(images/menunewbg2.gif) left top no-repeat;
+		}
+		dl.bitem dt, dl.bitem2 dt {
+			height:25px;
+			line-height:25px;
+			padding-left:35px;
+			font-size: 14px;
+			cursor:pointer;
+		}
+		dl.bitem dd, dl.bitem2 dd {
+			padding:3px 3px 3px 3px;
+		}
+		div.items {
+			clear: both;
+			overflow: hidden;
+		}
+		.fllct {
+			display: inline-block;
+		}
+		.flrct {
+			display: inline-block;
+		}
+		.sitemu li {
+			line-height:24px;
+			padding:0px 0px 0px 18px;
+			background:url(images/arr4.gif) no-repeat 5px 9px;
+		}
+		.mmac .innermm {
+			background:url(images/leftbg2.gif) no-repeat;
+			height:40px!important;
+			padding:10px 5px 10px 10px;
+			word-wrap: break-word;
+			word-break : break-all;
+			font-size: 14px;
+			font-weight:bold;
+		}
+		.mm .innermm {
+			background:url(images/leftmbg1.gif) no-repeat;
+			height:40px!important;
+			padding:10px 5px 10px 10px;
+			word-wrap: break-word;
+			word-break : break-all;
+			font-size: 14px;
+			font-weight:bold;
+			cursor:pointer;
+		}
+		.mm:hover .innermm {
+			background:url(images/leftbg2.gif) no-repeat;
+		}
+		.mmf {
+			height:1px;
+			padding:5px 7px 5px 7px;
+		}
+		.mainlft {
+			padding-top:8px;
+		}
+		#mainct {
+			padding-top:8px;
+			background: url(images/idnbg1.gif) repeat-y;
+		}
+	</style>
+	<link href="images/style<?php echo $cfg_admin_skin;?>/style.css" rel="stylesheet" type="text/css" />
+	<base target="main" />
+</head>
+<body target="main" onLoad="CheckOpenMenu();">
+	<table width="200" align="left" border='0' cellspacing='0' cellpadding='0' style="text-align:left;">
+		<tr>
+			<td class="mainlft" width='30' valign='top'>
+				<div id='link1' class='mmac'>
+					<div class="innermm" onClick="ShowMainMenu(1)">内容</div>
+				</div> 
+				<div id='link5' class='mm'>
+					<div class="innermm" onClick="ShowMainMenu(5)">生成</div>
+				</div> 
+				<div id='link6' class='mm'>
+					<div class="innermm" onClick="ShowMainMenu(6)">会员</div>
+				</div>
+				<?php
+					if($cuserLogin->getUserType() >= 10) {
+				?>
+				<div id='link100' class='mm'>
+					<div class="innermm" onClick="ShowMainMenu(100)">模块</div>
+				</div>
+				<div id='link7' class='mm'>
+					<div class="innermm" onClick="ShowMainMenu(7)">模板</div>
+				</div>
+				<div id='link10' class='mm'>
+					<div class="innermm" onClick="ShowMainMenu(10)">系统</div>
+				</div>
+				<?php } ?>
+				<div class='mmf'></div>
+			</td>
+			<td id='mainct' width='170' valign="top">
+				<div id='ct1'>
+					<?php GetMenus($cuserLogin->getUserRank(), 'main');?>
+				</div>
+				<div id='ct100'></div>
+				<div id='ct3'></div>
+				<div id='ct5'></div>
+				<div id='ct6'></div>
+				<div id='ct7'></div>
+				<div id='ct20'></div>
+				<div id='ct10'></div>
+			</td>
+		</tr>
+		<tr>
+			<td width='30'></td>
+			<td width='170' valign='top'><img src='images/idnbgfoot.gif' /></td>
+		</tr>
+	</table>
+	<?php
+		if(!empty($openitem) && $openitem!=1){
+	?>
+		<script type='text/javascript'>
+			ShowMainMenu(100);
+		</script>
+	<?php } ?>
+	<script>
+		function myAlert() {
+			alert('missra');	
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{missra:page pagesize="50"/}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+        <title>会员模型管理</title>
+        <link href="css/base.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="bodytitle">
+            <div class="bodytitleleft"></div>
+            <div class="bodytitletxt" style="padding-left:10px;">会员模型管理</div>
+        </div>
+        <div class="panel-box margin-bottom-10">
+            <table width='96%' border="0" cellpadding='0' cellspacing='0'>
+                <tr>
+                    <td width='30%' class="tbtitletxt" style="padding-left:10px;">[<a href="member_model_add.php">增加会员模型</a>]</td>
+                    <td align='right'> [图片说明:暂无] </td>
+                </tr>
+            </table>
+        </div>
+        <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class='margin-bottom-10' bgcolor="#E0E0E0">
+            <tr height="26" align="center" bgcolor="#F5F5F5">
+                <td>ID号</td>
+                <td>模型名称</td>
+                <td>表名</td>
+                <td>会员数</td>
+                <td>启用状态</td>
+                <td>管理</td>
+            </tr>
+            {missra:datalist}
+            <tr height="26" align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#F0F0F0';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+                <td>{missra:field.id/}</td>
+                <td><a href="member_main.php?mtype={missra:field.name/}" title="{missra:field.description/}">{missra:field.name/}</a>{missra:if field.issystem==1 }
+                    <font color=red>[*]</font>{/missra:if}</td>
+                <td>{missra:field.table/}</td>
+                <td>{missra:field.table function='GetTotalMember(@me)'/}</td>
+                <td> {missra:if field.state==0 }
+                    <font color=red>[×]Off</font> {else}
+                    <font color=green>[√]On</font> {/missra:if} </td>
+                <td><a href='member_model_edit.php?id={missra:field.id/}&dopost=edit'>编辑</a> | <a href='member_model_edit.php?id={missra:field.id/}&dopost=copy'>复制</a> | <a href='member_model_edit.php?id={missra:field.id/}&dopost=disabled'>{missra:if field.state==0 }启用{else}禁用{/missra:if}</a> | <a href='member_model_edit.php?id={missra:field.id/}&dopost=delete'>删除</a></td>
+            </tr>
+            {/missra:datalist}
+        </table>
+        <div class="panel-box align-center">{missra:pagelist listsize=6/}</div>
+    </body>
+
+</html>

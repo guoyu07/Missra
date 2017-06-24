@@ -1,0 +1,7 @@
+指定的单个栏目的链接标签
+>>missra>>
+{missra:type}
+<a href="[field:typelink /]">[field:typename /]</a>
+{/missra:type}
+>>missra>>
+typeid='' 指定栏目ID
